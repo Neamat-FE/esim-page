@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import SearchSection from "./SearchSection";
 import TripType from "./TripType";
+import DataSection from "./DataSection";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Navbar />
       <SearchSection />
       <TripType />
+      <DataSection />
     </>
   );
 };

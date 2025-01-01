@@ -1,63 +1,76 @@
 import React, { useState } from "react";
 
-const TripType = () => {
-  const [tripType, setTripType] = useState("oneWay");
+const ESIMSelector = () => {
+  const [selectedOption, setSelectedOption] = useState("local");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
-  const handleTripTypeChange = (event) => {
-    setTripType(event.target.value);
+  const handleOptionChange = (e) => {
+    setSelectedOption(e.target.value);
+  };
+
+  const handleCountryChange = (e) => {
+    setSelectedCountry(e.target.value);
   };
 
   return (
-    <div className="trip-type-selector container mt-5">
-      <div>
-        <div className="form-check form-check-inline">
+    <div
+      style={{ fontFamily: "Arial, sans-serif", padding: "10px" }}
+      className="container mt-3"
+    >
+      <div style={{ display: "flex", gap: "20px", alignItems: "center" }}>
+        <label>
           <input
-            className="form-check-input"
             type="radio"
-            name="tripType"
-            id="oneWay"
-            value="oneWay"
-            checked={tripType === "oneWay"}
-            onChange={handleTripTypeChange}
+            name="esimType"
+            value="local"
+            checked={selectedOption === "local"}
+            onChange={handleOptionChange}
           />
-          <label className="form-check-label" htmlFor="oneWay">
-            One Way
-          </label>
-        </div>
-        <div className="form-check form-check-inline">
+          Local eSIMs
+        </label>
+        <label>
           <input
-            className="form-check-input"
             type="radio"
-            name="tripType"
-            id="roundTrip"
-            value="roundTrip"
-            checked={tripType === "roundTrip"}
-            onChange={handleTripTypeChange}
+            name="esimType"
+            value="regional"
+            checked={selectedOption === "regional"}
+            onChange={handleOptionChange}
           />
-          <label className="form-check-label" htmlFor="roundTrip">
-            Round Trip
-          </label>
-        </div>
-        <div className="form-check form-check-inline">
+          Regional eSIMs
+        </label>
+        <label>
           <input
-            className="form-check-input"
             type="radio"
-            name="tripType"
-            id="multiCity"
-            value="multiCity"
-            checked={tripType === "multiCity"}
-            onChange={handleTripTypeChange}
+            name="esimType"
+            value="global"
+            checked={selectedOption === "global"}
+            onChange={handleOptionChange}
           />
-          <label className="form-check-label" htmlFor="multiCity">
-            Multicity
-          </label>
-        </div>
+          Global eSIMs
+        </label>
       </div>
-      <p className="selected-trip-type mt-3">
-        <strong>Selected Trip Type:</strong> {tripType}
-      </p>
+
+      <div style={{ marginTop: "20px" }}>
+        <select
+          value={selectedCountry}
+          onChange={handleCountryChange}
+          style={{
+            width: "200px",
+            padding: "10px",
+            border: "1px solid #ccc",
+            borderRadius: "5px",
+          }}
+        >
+          <option value="">Select Country</option>
+          <option value="USA">USA</option>
+          <option value="India">India</option>
+          <option value="UK">UK</option>
+          <option value="Germany">Germany</option>
+          <option value="Australia">Australia</option>
+        </select>
+      </div>
     </div>
   );
 };
 
-export default TripType;
+export default ESIMSelector;
