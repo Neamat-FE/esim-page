@@ -1,0 +1,477 @@
+{
+  "status": 1,
+  "message": "Addons Data Found",
+  "data": [
+    {
+      "id": "algecom-7days-1gb",
+      "type": "sim",
+      "price": 567,
+      "amount": 1024,
+      "day": 7,
+      "is_unlimited": false,
+      "title": "1 GB - 7 Days",
+      "data": "1 GB",
+      "short_info": null,
+      "qr_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Scan QR code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "manual_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To manually activate the eSIM on your eSIM capable device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Manually enter the SM-DP+ Address and activation code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "voice": null,
+      "text": null,
+      "net_price": 226.8,
+      "usd_price": 4.5,
+      "usd_net_price": 1.8,
+      "country": {
+        "slug": "algeria",
+        "country_code": "DZ",
+        "title": "Algeria",
+        "image": {
+          "width": 132,
+          "height": 99,
+          "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+        }
+      },
+      "operator": {
+        "id": 827,
+        "style": "light",
+        "gradient_start": "#00bd68",
+        "gradient_end": "#006d5c",
+        "type": "local",
+        "is_prepaid": false,
+        "title": "Algecom",
+        "esim_type": "Prepaid",
+        "warning": null,
+        "apn_type": "automatic",
+        "apn_value": null,
+        "is_roaming": true,
+        "image": {
+          "width": 1035,
+          "height": 653,
+          "url": "https://cdn.airalo.com/images/c1b8f85c-6207-4e7f-8aaf-bca6a5975e3f.png"
+        },
+        "plan_type": "data",
+        "activation_policy": "first-usage",
+        "is_kyc_verify": false,
+        "rechargeability": true,
+        "other_info": null
+      },
+      "coverage_network": [
+        {
+          "name": "DZ",
+          "networks": [
+            {
+              "name": "Djeezy",
+              "types": ["4G"]
+            }
+          ]
+        }
+      ],
+      "coverage_countries": [
+        {
+          "country_code": "DZ",
+          "title": "Algeria",
+          "image": {
+            "width": 132,
+            "height": 99,
+            "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+          }
+        }
+      ],
+      "totalFareAmount": 567,
+      "markup": "0.00",
+      "markup_type": "PERCENTAGE",
+      "baseIndex": 0
+    },
+    {
+      "id": "algecom-15days-2gb",
+      "type": "sim",
+      "price": 819,
+      "amount": 2048,
+      "day": 15,
+      "is_unlimited": false,
+      "title": "2 GB - 15 Days",
+      "data": "2 GB",
+      "short_info": null,
+      "qr_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Scan QR code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "manual_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To manually activate the eSIM on your eSIM capable device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Manually enter the SM-DP+ Address and activation code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "voice": null,
+      "text": null,
+      "net_price": 428.4,
+      "usd_price": 6.5,
+      "usd_net_price": 3.4,
+      "country": {
+        "slug": "algeria",
+        "country_code": "DZ",
+        "title": "Algeria",
+        "image": {
+          "width": 132,
+          "height": 99,
+          "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+        }
+      },
+      "operator": {
+        "id": 827,
+        "style": "light",
+        "gradient_start": "#00bd68",
+        "gradient_end": "#006d5c",
+        "type": "local",
+        "is_prepaid": false,
+        "title": "Algecom",
+        "esim_type": "Prepaid",
+        "warning": null,
+        "apn_type": "automatic",
+        "apn_value": null,
+        "is_roaming": true,
+        "image": {
+          "width": 1035,
+          "height": 653,
+          "url": "https://cdn.airalo.com/images/c1b8f85c-6207-4e7f-8aaf-bca6a5975e3f.png"
+        },
+        "plan_type": "data",
+        "activation_policy": "first-usage",
+        "is_kyc_verify": false,
+        "rechargeability": true,
+        "other_info": null
+      },
+      "coverage_network": [
+        {
+          "name": "DZ",
+          "networks": [
+            {
+              "name": "Djeezy",
+              "types": ["4G"]
+            }
+          ]
+        }
+      ],
+      "coverage_countries": [
+        {
+          "country_code": "DZ",
+          "title": "Algeria",
+          "image": {
+            "width": 132,
+            "height": 99,
+            "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+          }
+        }
+      ],
+      "totalFareAmount": 819,
+      "markup": "0.00",
+      "markup_type": "PERCENTAGE",
+      "baseIndex": 1
+    },
+    {
+      "id": "algecom-30days-3gb",
+      "type": "sim",
+      "price": 1071,
+      "amount": 3072,
+      "day": 30,
+      "is_unlimited": false,
+      "title": "3 GB - 30 Days",
+      "data": "3 GB",
+      "short_info": null,
+      "qr_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Scan QR code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "manual_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To manually activate the eSIM on your eSIM capable device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Manually enter the SM-DP+ Address and activation code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "voice": null,
+      "text": null,
+      "net_price": 630,
+      "usd_price": 8.5,
+      "usd_net_price": 5,
+      "country": {
+        "slug": "algeria",
+        "country_code": "DZ",
+        "title": "Algeria",
+        "image": {
+          "width": 132,
+          "height": 99,
+          "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+        }
+      },
+      "operator": {
+        "id": 827,
+        "style": "light",
+        "gradient_start": "#00bd68",
+        "gradient_end": "#006d5c",
+        "type": "local",
+        "is_prepaid": false,
+        "title": "Algecom",
+        "esim_type": "Prepaid",
+        "warning": null,
+        "apn_type": "automatic",
+        "apn_value": null,
+        "is_roaming": true,
+        "image": {
+          "width": 1035,
+          "height": 653,
+          "url": "https://cdn.airalo.com/images/c1b8f85c-6207-4e7f-8aaf-bca6a5975e3f.png"
+        },
+        "plan_type": "data",
+        "activation_policy": "first-usage",
+        "is_kyc_verify": false,
+        "rechargeability": true,
+        "other_info": null
+      },
+      "coverage_network": [
+        {
+          "name": "DZ",
+          "networks": [
+            {
+              "name": "Djeezy",
+              "types": ["4G"]
+            }
+          ]
+        }
+      ],
+      "coverage_countries": [
+        {
+          "country_code": "DZ",
+          "title": "Algeria",
+          "image": {
+            "width": 132,
+            "height": 99,
+            "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+          }
+        }
+      ],
+      "totalFareAmount": 1071,
+      "markup": "0.00",
+      "markup_type": "PERCENTAGE",
+      "baseIndex": 2
+    },
+    {
+      "id": "algecom-30days-5gb",
+      "type": "sim",
+      "price": 1449,
+      "amount": 5120,
+      "day": 30,
+      "is_unlimited": false,
+      "title": "5 GB - 30 Days",
+      "data": "5 GB",
+      "short_info": null,
+      "qr_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Scan QR code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "manual_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To manually activate the eSIM on your eSIM capable device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Manually enter the SM-DP+ Address and activation code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "voice": null,
+      "text": null,
+      "net_price": 1008,
+      "usd_price": 11.5,
+      "usd_net_price": 8,
+      "country": {
+        "slug": "algeria",
+        "country_code": "DZ",
+        "title": "Algeria",
+        "image": {
+          "width": 132,
+          "height": 99,
+          "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+        }
+      },
+      "operator": {
+        "id": 827,
+        "style": "light",
+        "gradient_start": "#00bd68",
+        "gradient_end": "#006d5c",
+        "type": "local",
+        "is_prepaid": false,
+        "title": "Algecom",
+        "esim_type": "Prepaid",
+        "warning": null,
+        "apn_type": "automatic",
+        "apn_value": null,
+        "is_roaming": true,
+        "image": {
+          "width": 1035,
+          "height": 653,
+          "url": "https://cdn.airalo.com/images/c1b8f85c-6207-4e7f-8aaf-bca6a5975e3f.png"
+        },
+        "plan_type": "data",
+        "activation_policy": "first-usage",
+        "is_kyc_verify": false,
+        "rechargeability": true,
+        "other_info": null
+      },
+      "coverage_network": [
+        {
+          "name": "DZ",
+          "networks": [
+            {
+              "name": "Djeezy",
+              "types": ["4G"]
+            }
+          ]
+        }
+      ],
+      "coverage_countries": [
+        {
+          "country_code": "DZ",
+          "title": "Algeria",
+          "image": {
+            "width": 132,
+            "height": 99,
+            "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+          }
+        }
+      ],
+      "totalFareAmount": 1449,
+      "markup": "0.00",
+      "markup_type": "PERCENTAGE",
+      "baseIndex": 3
+    },
+    {
+      "id": "algecom-30days-10gb",
+      "type": "sim",
+      "price": 2268,
+      "amount": 10240,
+      "day": 30,
+      "is_unlimited": false,
+      "title": "10 GB - 30 Days",
+      "data": "10 GB",
+      "short_info": null,
+      "qr_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Scan QR code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "manual_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To manually activate the eSIM on your eSIM capable device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Manually enter the SM-DP+ Address and activation code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "voice": null,
+      "text": null,
+      "net_price": 1953,
+      "usd_price": 18,
+      "usd_net_price": 15.5,
+      "country": {
+        "slug": "algeria",
+        "country_code": "DZ",
+        "title": "Algeria",
+        "image": {
+          "width": 132,
+          "height": 99,
+          "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+        }
+      },
+      "operator": {
+        "id": 827,
+        "style": "light",
+        "gradient_start": "#00bd68",
+        "gradient_end": "#006d5c",
+        "type": "local",
+        "is_prepaid": false,
+        "title": "Algecom",
+        "esim_type": "Prepaid",
+        "warning": null,
+        "apn_type": "automatic",
+        "apn_value": null,
+        "is_roaming": true,
+        "image": {
+          "width": 1035,
+          "height": 653,
+          "url": "https://cdn.airalo.com/images/c1b8f85c-6207-4e7f-8aaf-bca6a5975e3f.png"
+        },
+        "plan_type": "data",
+        "activation_policy": "first-usage",
+        "is_kyc_verify": false,
+        "rechargeability": true,
+        "other_info": null
+      },
+      "coverage_network": [
+        {
+          "name": "DZ",
+          "networks": [
+            {
+              "name": "Djeezy",
+              "types": ["4G"]
+            }
+          ]
+        }
+      ],
+      "coverage_countries": [
+        {
+          "country_code": "DZ",
+          "title": "Algeria",
+          "image": {
+            "width": 132,
+            "height": 99,
+            "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+          }
+        }
+      ],
+      "totalFareAmount": 2268,
+      "markup": "0.00",
+      "markup_type": "PERCENTAGE",
+      "baseIndex": 4
+    },
+    {
+      "id": "algecom-30days-20gb",
+      "type": "sim",
+      "price": 4284,
+      "amount": 20480,
+      "day": 30,
+      "is_unlimited": false,
+      "title": "20 GB - 30 Days",
+      "data": "20 GB",
+      "short_info": null,
+      "qr_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To activate the eSIM by scanning the QR code on your eSIM capable device you need to print or display this QR code on another device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Scan QR code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "manual_installation": "<p><br></p><p><b>eSIM name:</b> Algecom</p><p><br></p><p><b>Coverage: </b>Algeria</p><p><br></p><p><b>To manually activate the eSIM on your eSIM capable device:</b></p><p><br></p><ol><li>Settings > Cellular/Mobile > Add Cellular/Mobile Plan.</li><li>Manually enter the SM-DP+ Address and activation code.</li><li>Confirm eSIM plan details.</li><li>Label the eSIM.</li></ol><p><br></p><p><b>To access Data:</b></p><p><br></p><ol><li>Enable data roaming.</li></ol><p><br></p><p><b>To top up:</b></p><p><br></p><p>Visit airalo.com/my-esims or if purchased through the Airalo website/app visit “My eSIMs” tab.</p><p><br></p><p><br></p><p><br></p>",
+      "voice": null,
+      "text": null,
+      "net_price": 3654,
+      "usd_price": 34,
+      "usd_net_price": 29,
+      "country": {
+        "slug": "algeria",
+        "country_code": "DZ",
+        "title": "Algeria",
+        "image": {
+          "width": 132,
+          "height": 99,
+          "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+        }
+      },
+      "operator": {
+        "id": 827,
+        "style": "light",
+        "gradient_start": "#00bd68",
+        "gradient_end": "#006d5c",
+        "type": "local",
+        "is_prepaid": false,
+        "title": "Algecom",
+        "esim_type": "Prepaid",
+        "warning": null,
+        "apn_type": "automatic",
+        "apn_value": null,
+        "is_roaming": true,
+        "image": {
+          "width": 1035,
+          "height": 653,
+          "url": "https://cdn.airalo.com/images/c1b8f85c-6207-4e7f-8aaf-bca6a5975e3f.png"
+        },
+        "plan_type": "data",
+        "activation_policy": "first-usage",
+        "is_kyc_verify": false,
+        "rechargeability": true,
+        "other_info": null
+      },
+      "coverage_network": [
+        {
+          "name": "DZ",
+          "networks": [
+            {
+              "name": "Djeezy",
+              "types": ["4G"]
+            }
+          ]
+        }
+      ],
+      "coverage_countries": [
+        {
+          "country_code": "DZ",
+          "title": "Algeria",
+          "image": {
+            "width": 132,
+            "height": 99,
+            "url": "https://cdn.airalo.com/images/005cfd31-e093-4ecb-825f-171e083398cb.png"
+          }
+        }
+      ],
+      "totalFareAmount": 4284,
+      "markup": "0.00",
+      "markup_type": "PERCENTAGE",
+      "baseIndex": 5
+    }
+  ],
+  "type": "local",
+  "country_code": "DZ",
+  "searchId": "9ddf2ad5-96a6-45f1-a397-29f0b98a3b7e"
+}
