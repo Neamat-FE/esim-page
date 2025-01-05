@@ -1,17 +1,32 @@
 import react, { useState, useEffect } from "react";
 import jsonData from "./esimData.json";
+import Pagination from "react-bootstrap/Pagination";
+import "./esimItem.css";
 
 const EsimItem = () => {
   const [esimData, setEsimData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     // Load JSON data
     setEsimData(jsonData.data);
   }, []);
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentData = esimData.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Calculate total pages
+  const totalPages = Math.ceil(esimData.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div>
-      {esimData.map((esimItem) => (
+      {currentData.map((esimItem) => (
         <div
           className="row d-flex align-items-center mb-4 rounded shadow-sm p-3"
           key={esimItem.id}
@@ -88,11 +103,41 @@ const EsimItem = () => {
             </div>
           </div>
           <div className="col-md-2 text-end">
-            <button className="btn btn-danger mb-md-3 mb-0">Select</button>
-            <button className="btn btn-outline-danger">View Details</button>
+            <button className="btn btn-danger primary-color-bg mb-md-3 mb-0">
+              Select
+            </button>
+            <button className="btn primary-color-border primary-color">
+              View Details
+            </button>
           </div>
         </div>
       ))}
+
+      <Pagination className="justify-content-end mt-5">
+        <Pagination.First onClick={() => handlePageChange(1)} />
+        <Pagination.Prev
+          onClick={() =>
+            handlePageChange(currentPage > 1 ? currentPage - 1 : 1)
+          }
+        />
+        {[...Array(totalPages).keys()].map((number) => (
+          <Pagination.Item
+            key={number + 1}
+            active={number + 1 === currentPage}
+            onClick={() => handlePageChange(number + 1)}
+          >
+            {number + 1}
+          </Pagination.Item>
+        ))}
+        <Pagination.Next
+          onClick={() =>
+            handlePageChange(
+              currentPage < totalPages ? currentPage + 1 : totalPages
+            )
+          }
+        />
+        <Pagination.Last onClick={() => handlePageChange(totalPages)} />
+      </Pagination>
     </div>
   );
 };

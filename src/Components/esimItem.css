@@ -1,0 +1,34 @@
+/* Color Declaration */
+
+.primary-color {
+  color: #eb1933 !important;
+}
+.primary-color-bg {
+  background-color: #eb1933 !important;
+}
+.primary-color-border {
+  border: 1px solid #eb1933 !important;
+}
+.white-color {
+  color: #ffffff;
+}
+.white-color-bg {
+  background-color: #ffffff;
+}
+
+/* css starts Here */
+
+.pagination {
+  justify-content: end !important;
+}
+
+.page-link {
+  color: #333333;
+}
+
+.active > .page-link,
+.page-link.active {
+  background-color: #eb1933 !important;
+  border-color: #eb1933 !important;
+  color: white;
+}

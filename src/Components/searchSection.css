@@ -1,0 +1,32 @@
+.searchview {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px 0px rgba(28, 5, 77, 0.1),
+    0px 12px 32px 0px rgba(0, 0, 0, 0.05);
+}
+
+.nav-tabs .nav-link {
+  padding: 14px 36px !important;
+  background-color: #f5f6fa !important;
+  color: #333333 !important;
+  border: none !important;
+  font-size: 14px;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #fde8eb !important;
+  color: #eb1933 !important;
+}
+
+.form-check-input:focus {
+  box-shadow: none;
+  border-color: #e91c34;
+}
+input[type="radio"]:checked,
+input[type="checkbox"]:checked {
+  background-color: #eb1b34;
+  border: 1px solid #eb1933 !important;
+}

@@ -4,11 +4,19 @@ import { useState } from "react";
 import EsimItem from "./EsimItem";
 
 const DataSection = () => {
-  const [selectedOption, setSelectedOption] = useState("None");
+  const [sortBy, setSortby] = useState("");
+  function handleSortby(e) {
+    setSortby(e.target.value);
+  }
+  const [planSize, setPlansize] = useState("");
+  function handlePlansize(e) {
+    setPlansize(e.target.value);
+  }
 
-  const handleSelectionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+  const [validity, setValidity] = useState("");
+  function handleValidity(e) {
+    setValidity(e.target.value);
+  }
 
   return (
     <div className="container">
@@ -20,55 +28,45 @@ const DataSection = () => {
           </div>
 
           <div className="mt-2">
-            <Form.Label className="fw-bold">Sort By</Form.Label>
+            <Form.Label className="fw-bold">Sort By : {sortBy}</Form.Label>
             <form className="mt-2">
-              <div className="form-check">
+              <div className="form-check mb-2">
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="radioOptions"
-                  id="radio1"
                   value="cheapest"
-                  onChange={handleSelectionChange}
+                  checked={sortBy === "cheapest"}
+                  onChange={handleSortby}
                 />
-                <label className="form-check-label" htmlFor="radio1">
-                  Cheapest
-                </label>
+                <label className="form-check-label">Cheapest</label>
               </div>
-              <div className="form-check">
+              <div className="form-check mb-2">
                 <input
-                  className="form-check-input"
+                  className="form-check-input "
                   type="radio"
-                  name="radioOptions"
-                  id="radio2"
                   value="mostData"
-                  onChange={handleSelectionChange}
+                  checked={sortBy === "mostData"}
+                  onChange={handleSortby}
                 />
-                <label className="form-check-label" htmlFor="radio2">
-                  Most Data
-                </label>
+                <label className="form-check-label">Most Data</label>
               </div>
-              <div className="form-check">
+              <div className="form-check mb-2">
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="radioOptions"
-                  id="radio3"
                   value="leastData"
-                  onChange={handleSelectionChange}
+                  checked={sortBy === "leastData"}
+                  onChange={handleSortby}
                 />
-                <label className="form-check-label" htmlFor="radio3">
-                  Least Data
-                </label>
+                <label className="form-check-label">Least Data</label>
               </div>
               <div className="form-check">
                 <input
                   className="form-check-input"
                   type="radio"
-                  name="radioOptions"
-                  id="radio4"
                   value="lowestPrice"
-                  onChange={handleSelectionChange}
+                  checked={sortBy === "lowestPrice"}
+                  onChange={handleSortby}
                 />
                 <label className="form-check-label" htmlFor="radio4">
                   Lowest Price/GB
@@ -77,27 +75,30 @@ const DataSection = () => {
             </form>
           </div>
           <div className="plan-size mt-3">
-            <Form.Label className="fw-bold">Plan Size</Form.Label>
+            <Form.Label className="fw-bold">Plan Size : {planSize}</Form.Label>
             <select
               className="form-select mt-2"
+              value={planSize}
+              onChange={handlePlansize}
               aria-label="Default select example"
             >
               <option selected>Select Package</option>
-              <option value="1">10 GB</option>
-              <option value="2">15 Gb</option>
-              <option value="3">20 Gb</option>
+              <option value="10 GB">10 GB</option>
+              <option value="15 GB">15 Gb</option>
+              <option value="20 GB">20 Gb</option>
             </select>
           </div>
           <div className="plan-size mt-3">
-            <Form.Label className="fw-bold">Validity</Form.Label>
+            <Form.Label className="fw-bold">Validity : {validity}</Form.Label>
             <select
               className="form-select mt-2"
+              onChange={handleValidity}
               aria-label="Default select example"
             >
               <option selected>Select Validity</option>
-              <option value="1">5 Days</option>
-              <option value="2">7 Days</option>
-              <option value="3">10 Days</option>
+              <option value="5 days">5 Days</option>
+              <option value="7 days">7 Days</option>
+              <option value="10 days">10 Days</option>
             </select>
           </div>
 
