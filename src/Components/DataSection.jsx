@@ -8,6 +8,7 @@ const DataSection = () => {
   function handleSortby(e) {
     setSortby(e.target.value);
   }
+
   const [planSize, setPlansize] = useState("");
   function handlePlansize(e) {
     setPlansize(e.target.value);

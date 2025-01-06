@@ -2,11 +2,16 @@ import react, { useState, useEffect } from "react";
 import jsonData from "./esimData.json";
 import Pagination from "react-bootstrap/Pagination";
 import "./esimItem.css";
+import { useContext } from "react";
+import Accordion from "react-bootstrap/Accordion";
+import AccordionContext from "react-bootstrap/AccordionContext";
+import { useAccordionButton } from "react-bootstrap/AccordionButton";
+import Card from "react-bootstrap/Card";
 
 const EsimItem = () => {
   const [esimData, setEsimData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
 
   useEffect(() => {
     // Load JSON data
