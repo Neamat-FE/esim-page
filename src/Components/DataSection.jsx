@@ -25,7 +25,7 @@ const DataSection = () => {
         <div className="col-md-4 p-4 shadow-sm br-2 mt-5">
           <div className="range-selector">
             <Form.Label className="fw-bold">Price</Form.Label>
-            <Form.Range className="color-primary" />
+            <Form.Range className="custom-range" />
           </div>
 
           <div className="mt-2">

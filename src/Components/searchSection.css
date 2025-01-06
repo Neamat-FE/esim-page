@@ -6,19 +6,36 @@
     0px 12px 32px 0px rgba(0, 0, 0, 0.05);
 }
 
+.tab-button {
+  border: none;
+}
+
+/* change range color */
+
+.custom-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #eb1933 !important;
+  cursor: pointer;
+}
+
+/* end of change range color */
+
 .nav-tabs .nav-link {
-  padding: 14px 36px !important;
+  padding: 12px 32px !important;
   background-color: #f5f6fa !important;
   color: #333333 !important;
   border: none !important;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   margin-right: 10px;
 }
 
 .nav-tabs .nav-link.active {
   background-color: #fde8eb !important;
-  color: #eb1933 !important;
+  color: #333333 !important;
 }
 
 .form-check-input:focus {

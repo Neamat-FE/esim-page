@@ -20,12 +20,24 @@ const SearchSection = () => {
   return (
     <div className="container mt-5 searchview">
       <Tabs
-        defaultActiveKey="home"
+        defaultActiveKey="flight"
         transition={false}
         id="noanim-tab-example"
-        className="mb-3 tab-button"
+        className="mb-3 tab-button active"
       >
-        <Tab eventKey="flight" title="Flight">
+        <Tab
+          eventKey="flight"
+          title={
+            <span>
+              <img
+                src="images/airplane.png"
+                alt="Hotel Icon"
+                className="me-2"
+              />
+              Hotel
+            </span>
+          }
+        >
           <div className="row ">
             <form className="mt-3 col-md-8 d-flex align-items-center">
               <div className="form-check me-4">
@@ -120,7 +132,15 @@ const SearchSection = () => {
             </div>
           </div>
         </Tab>
-        <Tab eventKey="hotel" title="Hotel">
+        <Tab
+          eventKey="hotel"
+          title={
+            <span>
+              <img src="images/hotel.png" alt="Hotel Icon" className="me-2" />
+              Hotel
+            </span>
+          }
+        >
           <div className="row mt-4">
             <div className="col-md-3 mb-3 mb-md-0">
               <FloatingLabel
@@ -176,7 +196,15 @@ const SearchSection = () => {
             </div>
           </div>
         </Tab>
-        <Tab eventKey="visa" title="Visa">
+        <Tab
+          eventKey="visa"
+          title={
+            <span>
+              <img src="images/visa.png" alt="Visa Icon" className="me-2" />
+              Visa
+            </span>
+          }
+        >
           <div className="row mt-4">
             <div className="col-md-3 mb-3 mb-md-0">
               <FloatingLabel
@@ -232,7 +260,15 @@ const SearchSection = () => {
             </div>
           </div>
         </Tab>
-        <Tab eventKey="esim" title="eSIM">
+        <Tab
+          eventKey="esim"
+          title={
+            <span>
+              <img src="images/esim.png" alt="Esim Icon" className="me-2" />
+              eSIM
+            </span>
+          }
+        >
           <form className="mt-3 col-md-8 d-flex align-items-center">
             <div className="form-check me-4">
               <input
