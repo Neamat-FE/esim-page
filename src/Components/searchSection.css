@@ -47,3 +47,6 @@ input[type="checkbox"]:checked {
   background-color: #eb1b34;
   border: 1px solid #eb1933 !important;
 }
+select[form-select]:focus option:checked {
+  background-color: red !important;
+}

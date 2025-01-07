@@ -32,3 +32,16 @@
   border-color: #eb1933 !important;
   color: white;
 }
+
+.html-content p {
+  margin: 0; /* Removes top and bottom margins */
+  padding: 0; /* Removes padding if any */
+  line-height: 1.2; /* Adjusts the spacing between lines */
+}
+.html-content ul {
+  margin: 0;
+  padding-left: 20px; /* Adds padding only for indentation */
+}
+.html-content li {
+  margin-bottom: 2px; /* Reduce spacing between list items */
+}
