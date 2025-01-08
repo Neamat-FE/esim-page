@@ -1,19 +1,63 @@
-/* Color Declaration */
+/* Text Color Component */
+
+.text-color-primary {
+  color: #212529 !important;
+}
+.text-color-secondary {
+  color: #52556f !important;
+}
+.text-color-light {
+  color: #6e7491 !important;
+}
+.text-color-white {
+  color: #ffffff !important;
+}
+
+/* Color Component */
 
 .primary-color {
   color: #eb1933 !important;
 }
-.primary-color-bg {
+.secondary-color {
+  color: #fde8eb !important;
+}
+
+.white-color {
+  color: #fff;
+}
+
+/* Color Background Component */
+
+.primary-bg-color {
   background-color: #eb1933 !important;
 }
-.primary-color-border {
-  border: 1px solid #eb1933 !important;
+.secondary-bg-color {
+  background-color: #fde8eb !important;
 }
-.white-color {
-  color: #ffffff;
+
+.white-bg-color {
+  background-color: #fff;
 }
-.white-color-bg {
-  background-color: #ffffff;
+
+/* font sizes */
+
+.font-size-sm {
+  font-size: 12px;
+}
+.font-size-md {
+  font-size: 14px;
+}
+.font-size-lg {
+  font-size: 16px;
+}
+.font-size-xl {
+  font-size: 18px;
+}
+.font-size-xxl {
+  font-size: 20px;
+}
+.font-size-xxxl {
+  font-size: 24px;
 }
 
 /* css starts Here */

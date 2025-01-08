@@ -24,12 +24,16 @@ const DataSection = () => {
       <div className="row">
         <div className="col-md-4 p-4 shadow-sm br-2 mt-5">
           <div className="range-selector">
-            <Form.Label className="fw-bold">Price</Form.Label>
+            <Form.Label className="fw-bold font-size-lg text-color-primary">
+              Price
+            </Form.Label>
             <Form.Range className="custom-range" />
           </div>
 
           <div className="mt-2">
-            <Form.Label className="fw-bold">Sort By : {sortBy}</Form.Label>
+            <Form.Label className="fw-bold font-size-lg text-color-primary">
+              Sort By : {sortBy}
+            </Form.Label>
             <form className="mt-2">
               <div className="form-check mb-2">
                 <input
@@ -39,7 +43,9 @@ const DataSection = () => {
                   checked={sortBy === "cheapest"}
                   onChange={handleSortby}
                 />
-                <label className="form-check-label">Cheapest</label>
+                <label className="form-check-label text-color-secondary">
+                  Cheapest
+                </label>
               </div>
               <div className="form-check mb-2">
                 <input
@@ -49,7 +55,9 @@ const DataSection = () => {
                   checked={sortBy === "mostData"}
                   onChange={handleSortby}
                 />
-                <label className="form-check-label">Most Data</label>
+                <label className="form-check-label text-color-secondary">
+                  Most Data
+                </label>
               </div>
               <div className="form-check mb-2">
                 <input
@@ -59,7 +67,9 @@ const DataSection = () => {
                   checked={sortBy === "leastData"}
                   onChange={handleSortby}
                 />
-                <label className="form-check-label">Least Data</label>
+                <label className="form-check-label text-color-secondary">
+                  Least Data
+                </label>
               </div>
               <div className="form-check">
                 <input
@@ -69,16 +79,21 @@ const DataSection = () => {
                   checked={sortBy === "lowestPrice"}
                   onChange={handleSortby}
                 />
-                <label className="form-check-label" htmlFor="radio4">
+                <label
+                  className="form-check-label text-color-secondary"
+                  htmlFor="radio4"
+                >
                   Lowest Price/GB
                 </label>
               </div>
             </form>
           </div>
           <div className="plan-size mt-3">
-            <Form.Label className="fw-bold">Plan Size : {planSize}</Form.Label>
+            <Form.Label className="fw-bold font-size-lg text-color-primary">
+              Plan Size : {planSize}
+            </Form.Label>
             <select
-              className="form-select mt-2"
+              className="form-select mt-2 text-color-secondary"
               value={planSize}
               onChange={handlePlansize}
               aria-label="Default select example"
@@ -90,9 +105,11 @@ const DataSection = () => {
             </select>
           </div>
           <div className="plan-size mt-3">
-            <Form.Label className="fw-bold">Validity : {validity}</Form.Label>
+            <Form.Label className="fw-bold font-size-lg text-color-primary">
+              Validity : {validity}
+            </Form.Label>
             <select
-              className="form-select mt-2"
+              className="form-select mt-2 text-color-secondary"
               onChange={handleValidity}
               aria-label="Default select example"
             >
@@ -104,7 +121,9 @@ const DataSection = () => {
           </div>
 
           <div className="mt-3">
-            <Form.Label className="fw-bold">Price</Form.Label>
+            <Form.Label className="fw-bold font-size-lg text-color-primary">
+              Price
+            </Form.Label>
             <div className="form-check">
               <input
                 className="form-check-input"
@@ -112,7 +131,10 @@ const DataSection = () => {
                 value=""
                 id="flexCheckDefault"
               />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
+              <label
+                className="form-check-label text-color-secondary"
+                htmlFor="flexCheckDefault"
+              >
                 Show Plans with Voice/SMS
               </label>
             </div>

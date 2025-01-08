@@ -9,7 +9,10 @@ const Navbar = () => {
             <img src="images/logo.png" alt="" />
           </a>
           <form className="d-flex" role="search">
-            <button className="btn btn-danger" type="submit">
+            <button
+              className="btn primary-bg-color text-color-white"
+              type="submit"
+            >
               Sign Out
             </button>
           </form>

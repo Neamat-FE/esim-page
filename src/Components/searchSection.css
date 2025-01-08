@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap");
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+/* CSS Part Starts Here */
+
 .searchview {
   background-color: white;
   padding: 20px;
@@ -49,4 +56,9 @@ input[type="checkbox"]:checked {
 }
 select[form-select]:focus option:checked {
   background-color: red !important;
+}
+
+.form-select-lg option:checked {
+  background-color: #eb1933 !important;
+  color: #fff;
 }
