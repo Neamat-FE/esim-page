@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import EsimItem from "./EsimItem";
+import Accordionitem from "./Accordionitem";
 
 const DataSection = () => {
   const [sortBy, setSortby] = useState("");
@@ -142,6 +143,9 @@ const DataSection = () => {
         </div>
         <div className="col-md-8 p-4 mt-5 shadow-md p-3">
           <EsimItem />
+        </div>
+        <div className=" mt-4">
+          <Accordionitem />
         </div>
       </div>
     </div>

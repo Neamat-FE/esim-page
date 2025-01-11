@@ -89,3 +89,12 @@
 .html-content li {
   margin-bottom: 2px; /* Reduce spacing between list items */
 }
+
+.toggle-icon {
+  width: 20px; /* Adjust size as needed */
+  transition: transform 0.3s ease;
+}
+
+.toggle-icon .up {
+  transform: rotate(180deg); /* Rotates the arrow to point up */
+}
