@@ -67,8 +67,8 @@ const EsimItem = () => {
               <p className="m-0 text-color-secondary fw-semibold font-size-xl">
                 {esimItem.title}
               </p>
-              <div className="row d-flex align-items-center">
-                <div className="col-md-6">
+              <div className="row d-flex justify-content-center align-items-center">
+                <div className="col-6">
                   <div className="d-flex align-items-center align-content-center mt-2">
                     <img src="images/global.png" alt="" />
                     <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
@@ -98,7 +98,7 @@ const EsimItem = () => {
                   </div>
                 </div>
 
-                <div className="col-md-6 text-end align-content-end">
+                <div className="col-6 text-end align-content-end">
                   <div className="d-flex align-items-center align-content-center mt-2">
                     <img src="images/data.png" alt="" />
                     <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
@@ -130,8 +130,8 @@ const EsimItem = () => {
               </div>
             </div>
 
-            <div className="col-md-2 text-end">
-              <button className="btn btn-danger primary-bg-color mb-md-3 mb-0 me-3 me-md-0 font-size-lg fw-medium">
+            <div className="col-md-2 text-end mt-4 ">
+              <button className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0">
                 Select
               </button>
               <CustomToggle eventKey="0">

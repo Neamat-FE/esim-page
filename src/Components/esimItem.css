@@ -60,6 +60,24 @@
   font-size: 24px;
 }
 
+/* Button */
+
+.btn-primary {
+  background-color: #eb1933;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  border: 1px solid #eb1933;
+  background-color: white;
+  color: #eb1933;
+}
+
 /* css starts Here */
 
 .pagination {

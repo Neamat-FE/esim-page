@@ -24,6 +24,32 @@ const SearchSection = () => {
     setEsimCountry(countryData.data);
   }, []);
 
+  // Select view
+  const [locationDetails, setLocationDetails] = useState("");
+
+  const locations = [
+    { value: "", label: "Select Location", details: "" },
+    { value: "coxs-bazar", label: "Cox's Bazar", details: "Cox's Bazar" },
+    {
+      value: "dhaka",
+      label: "Dhaka",
+      details: "Hazrat Shahjalal International",
+    },
+    {
+      value: "chittagong",
+      label: "Chittagong",
+      details: "Shah Amanat International",
+    },
+    { value: "sylhet", label: "Sylhet", details: "Osmani International" },
+  ];
+
+  const handleLocationChange = (event) => {
+    const selectedLocation = locations.find(
+      (loc) => loc.value === event.target.value
+    );
+    setLocationDetails(selectedLocation?.details || "");
+  };
+
   return (
     <div className="container mt-5 searchview">
       <Tabs
@@ -41,7 +67,7 @@ const SearchSection = () => {
                 alt="Hotel Icon"
                 className="me-2"
               />
-              Hotel
+              Flight
             </span>
           }
         >
@@ -86,31 +112,43 @@ const SearchSection = () => {
           </div>
           <div className="row mt-4">
             <div className="col-md-3 mb-3 mb-md-0">
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Works with selects"
-              >
-                <Form.Select aria-label="Floating label select example">
-                  <option>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </Form.Select>
-              </FloatingLabel>
+              <div className="form-group position-relative">
+                <div className="card border rounded-4 py-2 ps-4">
+                  <small className="text-muted">From</small>
+                  <select
+                    className="form-select border-0 p-0 fw-bold fs-5"
+                    onChange={handleLocationChange}
+                  >
+                    {locations.map((location) => (
+                      <option key={location.value} value={location.value}>
+                        {location.label}
+                      </option>
+                    ))}
+                  </select>
+                  <small className="text-muted">{locationDetails}</small>
+                </div>
+              </div>
             </div>
+
             <div className="col-md-3 mb-3 mb-md-0">
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Works with selects"
-              >
-                <Form.Select aria-label="Floating label select example">
-                  <option>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </Form.Select>
-              </FloatingLabel>
+              <div className="form-group position-relative">
+                <div className="card border rounded-4 py-2 ps-4">
+                  <small className="text-muted">To</small>
+                  <select
+                    className="form-select border-0 p-0 fs-5 fw-semibold"
+                    onChange={handleLocationChange}
+                  >
+                    {locations.map((location) => (
+                      <option key={location.value} value={location.value}>
+                        {location.label}
+                      </option>
+                    ))}
+                  </select>
+                  <small className="text-muted">{locationDetails}</small>
+                </div>
+              </div>
             </div>
+
             <div className="col-md-3 mb-3 mb-md-0">
               <FloatingLabel
                 controlId="floatingSelect"
@@ -150,10 +188,7 @@ const SearchSection = () => {
         >
           <div className="row mt-4">
             <div className="col-md-3 mb-3 mb-md-0">
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Works with selects"
-              >
+              <FloatingLabel controlId="floatingSelect" label="From">
                 <Form.Select aria-label="Floating label select example">
                   <option>Open this select menu</option>
                   <option value="1">One</option>
@@ -276,7 +311,7 @@ const SearchSection = () => {
             </span>
           }
         >
-          <form className="mt-3 col-md-8 d-flex align-items-center">
+          <form className="mt-4 col-md-8 d-flex align-items-center">
             <div className="form-check me-4">
               <input
                 className="form-check-input"

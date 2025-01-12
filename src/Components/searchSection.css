@@ -31,7 +31,7 @@ body {
 /* end of change range color */
 
 .nav-tabs .nav-link {
-  padding: 12px 32px !important;
+  padding: 10px 16px !important;
   background-color: #f5f6fa !important;
   color: #333333 !important;
   border: none !important;
@@ -61,4 +61,25 @@ select[form-select]:focus option:checked {
 .form-select-lg option:checked {
   background-color: #eb1933 !important;
   color: #fff;
+}
+
+/* Search css */
+
+.form-select:focus {
+  box-shadow: none;
+}
+
+.card {
+  border-color: #dee2e6 !important;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: #adb5bd !important;
+  cursor: pointer;
+}
+
+/* Remove default select arrow */
+.form-select {
+  background-image: none;
 }
