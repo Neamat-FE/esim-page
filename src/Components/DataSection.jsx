@@ -1,34 +1,99 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import EsimItem from "./EsimItem";
+import esimData from "./esimData.json";
 import Accordionitem from "./Accordionitem";
 
 const DataSection = () => {
-  const [sortBy, setSortby] = useState("");
-  function handleSortby(e) {
-    setSortby(e.target.value);
-  }
+  const [result, setResult] = useState(esimData.data);
 
-  const [planSize, setPlansize] = useState("");
-  function handlePlansize(e) {
-    setPlansize(e.target.value);
-  }
+  const [priceRange, setPriceRange] = useState(0);
+
+  const MIN_PRICE = 0;
+  const MAX_PRICE = 50000;
+
+  /*Sortby filter*/
+
+  const [sortBy, setSortby] = useState("");
+  const handleSortby = (e) => {
+    setSortby(e.target.value);
+    const sortByData = [...esimData.data].sort((a, b) => {
+      const bDataInMB = parseInt(b.data) * 1024;
+      const aDataInMB = parseInt(a.data) * 1024;
+
+      if (e.target.value == "cheapest") {
+        return a.amount - b.amount;
+      } else if (e.target.value == "mostData") {
+        return bDataInMB - aDataInMB;
+      } else if (e.target.value == "leastData") {
+        return aDataInMB - bDataInMB;
+      } else if (e.target.value == "lowestPrice") {
+        return a.amount - b.amount;
+      }
+    });
+    setResult(sortByData);
+  };
+
+  /*PlanSize filter*/
+
+  const [planSize, setPlanSize] = useState("");
+
+  const handlePlanSize = (e) => {
+    setPlanSize(e.target.value);
+    console.log(planSize);
+    const planSizeData = [...esimData.data].filter(
+      (item) => item.data === e.target.value
+    );
+    setResult(planSizeData);
+  };
+
+  // Validity Filter
 
   const [validity, setValidity] = useState("");
-  function handleValidity(e) {
+
+  const handleValidity = (e) => {
     setValidity(e.target.value);
-  }
+  };
+
+  // Ascending Descending Condition
+
+  const handleCheckboxChange = (e) => {
+    const checked = e.target.checked;
+
+    const sortedItems = [...esimData.data].sort((a, b) =>
+      checked ? a.amount - b.amount : b.amount - a.amount
+    );
+    setResult(sortedItems);
+  };
 
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-4 p-4 shadow-sm br-2 mt-5">
+        <div className="col-md-4 p-4 shadow br-2 mt-5 rounded">
           <div className="range-selector">
             <Form.Label className="fw-bold font-size-lg text-color-primary">
               Price
             </Form.Label>
-            <Form.Range className="custom-range" />
+            <div className="flex items-center gap-2">
+              <span>${MIN_PRICE}</span>
+              <input
+                type="range"
+                min={MIN_PRICE}
+                max={MAX_PRICE}
+                value={priceRange}
+                onChange={(e) => setPriceRange(parseInt(e.target.value))}
+                className=" h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer w-100"
+                style={{
+                  background: `linear-gradient(to right, #eb1933 0%, #eb1933 ${
+                    (priceRange / MAX_PRICE) * 100
+                  }%, #e5e7eb ${
+                    (priceRange / MAX_PRICE) * 100
+                  }%, #eb1933 100%)`,
+                }}
+              />
+              <span>{priceRange}</span>
+            </div>
           </div>
 
           <div className="mt-2">
@@ -96,13 +161,20 @@ const DataSection = () => {
             <select
               className="form-select mt-2 text-color-secondary"
               value={planSize}
-              onChange={handlePlansize}
+              onChange={handlePlanSize}
               aria-label="Default select example"
             >
-              <option selected>Select Package</option>
+              <option selected>Select Plan</option>
+              <option value="1 GB">1 GB</option>
+              <option value="2 GB">2 GB</option>
+              <option value="3 GB">3 GB</option>
+              <option value="5 GB">5 GB</option>
+              <option value="7 GB">7 GB</option>
               <option value="10 GB">10 GB</option>
-              <option value="15 GB">15 Gb</option>
-              <option value="20 GB">20 Gb</option>
+              <option value="15 GB">15 GB</option>
+              <option value="20 GB">20 GB</option>
+              <option value="25 GB">25 GB</option>
+              <option value="30 GB">30 GB</option>
             </select>
           </div>
           <div className="plan-size mt-3">
@@ -130,6 +202,7 @@ const DataSection = () => {
                 className="form-check-input"
                 type="checkbox"
                 value=""
+                onChange={handleCheckboxChange}
                 id="flexCheckDefault"
               />
               <label
@@ -142,7 +215,7 @@ const DataSection = () => {
           </div>
         </div>
         <div className="col-md-8 p-4 mt-5 shadow-md p-3">
-          <EsimItem />
+          <EsimItem esimItem={result} />
         </div>
         <div className=" mt-4">
           <Accordionitem />

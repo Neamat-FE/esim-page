@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from "react";
-import jsonData from "./esimData.json";
+
 import Pagination from "react-bootstrap/Pagination";
 import "./esimItem.css";
 import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import Accordionitem from "./Accordionitem";
 
-const EsimItem = () => {
-  const [esimData, setEsimData] = useState([]);
+const EsimItem = ({ esimItem }) => {
+  console.log(esimItem);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
-  useEffect(() => {
-    // Load JSON data
-    setEsimData(jsonData.data);
-  }, []);
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentData = esimData.slice(indexOfFirstItem, indexOfLastItem);
+  const currentData = esimItem.slice(indexOfFirstItem, indexOfLastItem);
 
   // Calculate total pages
-  const totalPages = Math.ceil(esimData.length / itemsPerPage);
+  const totalPages = Math.ceil(esimItem.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -53,7 +48,7 @@ const EsimItem = () => {
     <div>
       {currentData.map((esimItem) => (
         <Accordion key={esimItem.id}>
-          <div className="row d-flex align-items-center align-content-center mb-4 rounded shadow-sm p-3">
+          <div className="row d-flex align-items-center align-content-center mb-4 rounded shadow p-3">
             <div className="col-md-3 col-sm-12">
               <div className="img-section">
                 <img

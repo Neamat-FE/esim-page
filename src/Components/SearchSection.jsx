@@ -53,7 +53,7 @@ const SearchSection = () => {
   return (
     <div className="container mt-5 searchview">
       <Tabs
-        defaultActiveKey="flight"
+        defaultActiveKey="esim"
         transition={false}
         id="noanim-tab-example"
         className="mb-3 tab-button active"

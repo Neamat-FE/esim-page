@@ -78,6 +78,12 @@
   color: #eb1933;
 }
 
+/* shadow */
+.shadow {
+  box-shadow: 0px 2px 4px 0px rgba(28, 5, 77, 0.1),
+    0px 12px 32px 0px rgba(0, 0, 0, 0.05) !important;
+}
+
 /* css starts Here */
 
 .pagination {
