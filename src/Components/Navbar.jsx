@@ -10,7 +10,7 @@ const Navbar = () => {
           </a>
           <form className="d-flex" role="search">
             <button className="btn btn-primary" type="submit">
-              Sign Out
+              Sign In
             </button>
           </form>
         </div>

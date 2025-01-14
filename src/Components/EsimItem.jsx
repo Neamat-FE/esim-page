@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-
 import Pagination from "react-bootstrap/Pagination";
 import "./esimItem.css";
 import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import Accordionitem from "./Accordionitem";
+import { useNavigate } from "react-router-dom";
 
 const EsimItem = ({ esimItem }) => {
-  console.log(esimItem);
+  const data = "Hello from HomePage!";
+
+  const navigate = useNavigate();
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
@@ -126,7 +128,14 @@ const EsimItem = ({ esimItem }) => {
             </div>
 
             <div className="col-md-2 text-end mt-4 ">
-              <button className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0">
+              <button
+                className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0"
+                onClick={() =>
+                  navigate("/booking", {
+                    state: { esimData: esimItem },
+                  })
+                }
+              >
                 Select
               </button>
               <CustomToggle eventKey="0">

@@ -4,14 +4,33 @@ import { useState } from "react";
 import EsimItem from "./EsimItem";
 import esimData from "./esimData.json";
 import Accordionitem from "./Accordionitem";
+import "./DataSection.css";
+import BookingPage from "./BookingPage";
 
 const DataSection = () => {
   const [result, setResult] = useState(esimData.data);
 
+  /*Price Range filter*/
+
   const [priceRange, setPriceRange] = useState(0);
 
-  const MIN_PRICE = 0;
-  const MAX_PRICE = 50000;
+  const lowestValue = esimData.data.reduce(
+    (min, item) => Math.min(min, item.amount),
+    Infinity
+  );
+
+  const maxValue = esimData.data.reduce(
+    (max, item) => Math.max(max, item.amount),
+    -Infinity
+  );
+
+  const handlePriceRange = (e) => {
+    setPriceRange(parseInt(e.target.value));
+    const priceRangeData = [...esimData.data].filter(
+      (item) => item.amount <= e.target.value
+    );
+    setResult(priceRangeData);
+  };
 
   /*Sortby filter*/
 
@@ -76,23 +95,17 @@ const DataSection = () => {
               Price
             </Form.Label>
             <div className="flex items-center gap-2">
-              <span>${MIN_PRICE}</span>
               <input
                 type="range"
-                min={MIN_PRICE}
-                max={MAX_PRICE}
+                min={lowestValue}
+                max={maxValue}
                 value={priceRange}
-                onChange={(e) => setPriceRange(parseInt(e.target.value))}
-                className=" h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer w-100"
-                style={{
-                  background: `linear-gradient(to right, #eb1933 0%, #eb1933 ${
-                    (priceRange / MAX_PRICE) * 100
-                  }%, #e5e7eb ${
-                    (priceRange / MAX_PRICE) * 100
-                  }%, #eb1933 100%)`,
-                }}
+                onChange={handlePriceRange}
+                className="slider h-2 rounded-lg appearance-none cursor-pointer w-100"
               />
-              <span>{priceRange}</span>
+              <p className="fs-7 font-size-lg fw-bold">
+                <span>{lowestValue} tk</span> - <span>{priceRange} tk</span>
+              </p>
             </div>
           </div>
 
@@ -216,9 +229,6 @@ const DataSection = () => {
         </div>
         <div className="col-md-8 p-4 mt-5 shadow-md p-3">
           <EsimItem esimItem={result} />
-        </div>
-        <div className=" mt-4">
-          <Accordionitem />
         </div>
       </div>
     </div>

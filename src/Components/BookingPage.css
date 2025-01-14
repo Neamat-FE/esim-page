@@ -1,0 +1,21 @@
+.links {
+  text-decoration: none !important;
+}
+.breadcrumb-item {
+  color: #eb1933 !important;
+}
+.breadcrumb .breadcrumb-item a {
+  color: #52556f !important;
+  text-decoration: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.confirm-info .privacy a {
+  color: #eb1933 !important;
+  cursor: pointer;
+}
