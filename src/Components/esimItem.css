@@ -78,6 +78,13 @@
   color: #eb1933;
 }
 
+.btn-primary:disabled {
+  border: 1px solid #eb1933;
+  color: #eb1933;
+  background-color: #fff;
+  cursor: not-allowed;
+}
+
 /* shadow */
 .shadow {
   box-shadow: 0px 2px 4px 0px rgba(28, 5, 77, 0.1),

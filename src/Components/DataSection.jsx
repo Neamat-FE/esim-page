@@ -12,8 +12,6 @@ const DataSection = () => {
 
   /*Price Range filter*/
 
-  const [priceRange, setPriceRange] = useState(0);
-
   const lowestValue = esimData.data.reduce(
     (min, item) => Math.min(min, item.amount),
     Infinity
@@ -23,6 +21,8 @@ const DataSection = () => {
     (max, item) => Math.max(max, item.amount),
     -Infinity
   );
+  console.log(maxValue);
+  const [priceRange, setPriceRange] = useState(maxValue);
 
   const handlePriceRange = (e) => {
     setPriceRange(parseInt(e.target.value));
@@ -32,9 +32,19 @@ const DataSection = () => {
     setResult(priceRangeData);
   };
 
+  // Clear Filter
+
+  const handleClearFilter = () => {
+    setPriceRange(maxValue);
+    setSortby("cheapest");
+    setPlanSize("");
+    setValidity("");
+    setPlans(esimData.data);
+  };
+
   /*Sortby filter*/
 
-  const [sortBy, setSortby] = useState("");
+  const [sortBy, setSortby] = useState("cheapest");
   const handleSortby = (e) => {
     setSortby(e.target.value);
     const sortByData = [...esimData.data].sort((a, b) => {
@@ -73,9 +83,14 @@ const DataSection = () => {
 
   const handleValidity = (e) => {
     setValidity(e.target.value);
+    const validityData = [...esimData.data].filter(
+      (item) => item.day === parseInt(e.target.value, 10)
+    );
+    setResult(validityData);
   };
 
   // Ascending Descending Condition
+  const [plans, setPlans] = useState("");
 
   const handleCheckboxChange = (e) => {
     const checked = e.target.checked;
@@ -111,30 +126,38 @@ const DataSection = () => {
 
           <div className="mt-2">
             <Form.Label className="fw-bold font-size-lg text-color-primary">
-              Sort By : {sortBy}
+              Sort By :
             </Form.Label>
             <form className="mt-2">
               <div className="form-check mb-2">
                 <input
                   className="form-check-input"
                   type="radio"
+                  id="cheapest"
                   value="cheapest"
                   checked={sortBy === "cheapest"}
                   onChange={handleSortby}
                 />
-                <label className="form-check-label text-color-secondary">
+                <label
+                  className="form-check-label text-color-secondary"
+                  htmlFor="cheapest"
+                >
                   Cheapest
                 </label>
               </div>
               <div className="form-check mb-2">
                 <input
-                  className="form-check-input "
+                  className="form-check-input"
                   type="radio"
+                  id="mostData"
                   value="mostData"
                   checked={sortBy === "mostData"}
                   onChange={handleSortby}
                 />
-                <label className="form-check-label text-color-secondary">
+                <label
+                  className="form-check-label text-color-secondary"
+                  htmlFor="mostData"
+                >
                   Most Data
                 </label>
               </div>
@@ -142,11 +165,15 @@ const DataSection = () => {
                 <input
                   className="form-check-input"
                   type="radio"
+                  id="leastData"
                   value="leastData"
                   checked={sortBy === "leastData"}
                   onChange={handleSortby}
                 />
-                <label className="form-check-label text-color-secondary">
+                <label
+                  className="form-check-label text-color-secondary"
+                  htmlFor="leastData"
+                >
                   Least Data
                 </label>
               </div>
@@ -154,13 +181,14 @@ const DataSection = () => {
                 <input
                   className="form-check-input"
                   type="radio"
+                  id="lowestPrice"
                   value="lowestPrice"
                   checked={sortBy === "lowestPrice"}
                   onChange={handleSortby}
                 />
                 <label
                   className="form-check-label text-color-secondary"
-                  htmlFor="radio4"
+                  htmlFor="lowestPrice"
                 >
                   Lowest Price/GB
                 </label>
@@ -195,14 +223,20 @@ const DataSection = () => {
               Validity : {validity}
             </Form.Label>
             <select
+              value={validity}
               className="form-select mt-2 text-color-secondary"
               onChange={handleValidity}
               aria-label="Default select example"
             >
               <option selected>Select Validity</option>
-              <option value="5 days">5 Days</option>
-              <option value="7 days">7 Days</option>
-              <option value="10 days">10 Days</option>
+              <option value="60 Days">60 Days</option>
+              <option value="30 Days">30 Days</option>
+              <option value="15 Days">15 Days</option>
+              <option value="10 Days">10 Days</option>
+              <option value="7 Days">7 Days</option>
+              <option value="5 Days">5 Days</option>
+              <option value="3 Days">3 Days</option>
+              <option value="1 Day">1 Day</option>
             </select>
           </div>
 
@@ -225,6 +259,14 @@ const DataSection = () => {
                 Show Plans with Voice/SMS
               </label>
             </div>
+          </div>
+          <div className="mt-4 d-grid">
+            <button
+              className="btn btn-primary font-size-lg fw-semibold"
+              onClick={handleClearFilter}
+            >
+              Clear Filters
+            </button>
           </div>
         </div>
         <div className="col-md-8 p-4 mt-5 shadow-md p-3">

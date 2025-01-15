@@ -15,7 +15,8 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.confirm-info .privacy a {
+.confirm-info a {
   color: #eb1933 !important;
   cursor: pointer;
+  text-decoration: none;
 }

@@ -2,9 +2,13 @@ import React from "react";
 import Navbar from "./Navbar";
 import "./BookingPage.css";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import TextInput from "./Textinput";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import Accordionitem from "./Accordionitem";
 
 const BookingPage = () => {
   const location = useLocation();
@@ -19,43 +23,62 @@ const BookingPage = () => {
       .required("Last Name is required")
       .matches(/^[A-Za-z]+$/, "Only alphabets are allowed"),
 
-    contactNumber: Yup.number().required("Phone Number is required"),
+    phone: Yup.string().required("Phone Number is required"),
 
     email: Yup.string().email("Email in invalid").required("Email is required"),
   });
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = (event) => {
+    setIsChecked(event.target.checked);
+  };
+
+  const [phone, setPhone] = useState("");
+
+  const handleOnChange = (value) => {
+    setPhone(value);
+  };
 
   return (
     <div>
       <Navbar />
       <div className="container">
         <div className="row mt-4">
-          <div className="col-md-8">
-            <div className="row">
-              <div className="col-md-6">
-                <h3 className="primary-color font-size-xxxl fw-bold">
-                  Enter User Details
-                </h3>
-              </div>
-              <div className="col-md-6 text-end d-flex align-content-end">
-                <nav
-                  style={{ "--bs-breadcrumb-divider": "'>'" }}
-                  aria-label="breadcrumb"
-                >
-                  <ol className="breadcrumb">
-                    <li className="breadcrumb-item">
-                      <a href="">eSim Selection</a>
-                    </li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      Booking
-                    </li>
-                    <li className="breadcrumb-item text-color-secondary text-decoration-none">
-                      <a href="">Payment</a>
-                    </li>
-                  </ol>
-                </nav>
+          <div className="col-12">
+            <div className="col-8">
+              <div className="row d-flex align-items-center justify-content-between">
+                <div className="col-md-6">
+                  <h3 className="primary-color font-size-xxxl fw-bold">
+                    Enter User Details
+                  </h3>
+                </div>
+                <div className="col-md-6 d-flex justify-content-md-end justify-content-start">
+                  <nav
+                    style={{ "--bs-breadcrumb-divider": "'>'" }}
+                    aria-label="breadcrumb"
+                  >
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item">
+                        <a href="">eSim Selection</a>
+                      </li>
+                      <li
+                        className="breadcrumb-item active"
+                        aria-current="page"
+                      >
+                        Booking
+                      </li>
+                      <li className="breadcrumb-item text-color-secondary text-decoration-none">
+                        <a href="">Payment</a>
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
               </div>
             </div>
-
+            <div className="col-4"></div>
+          </div>
+          <div className="col-md-8">
             <div className="row d-flex align-items-center align-content-center mb-4 rounded shadow p-3 mt-4">
               <div className="col-md-3 col-sm-12">
                 <div className="img-section">
@@ -146,7 +169,7 @@ const BookingPage = () => {
                   initialValues={{
                     fName: "",
                     lName: "",
-                    contactNumber: "",
+                    phone: "",
                     email: "",
                   }}
                   validationSchema={validationSchema}
@@ -179,11 +202,39 @@ const BookingPage = () => {
 
                       <div className="row">
                         <div className="col-md-6">
-                          <TextInput
+                          {/* <TextInput
                             label="Contact Number"
                             name="contactNumber"
                             type="number"
                             placeholder="Enter Contact Number"
+                          /> */}
+                          <label
+                            htmlFor="phone"
+                            style={{
+                              fontSize: 14,
+                              fontWeight: "600",
+                              marginBottom: 10,
+                            }}
+                          >
+                            Contact Number{" "}
+                            <span className="text-danger">*</span>
+                          </label>
+                          <PhoneInput
+                            country={"bd"}
+                            name="phone"
+                            value={phone}
+                            onChange={handleOnChange}
+                            enableSearch
+                            preferredCountries={["us", "gb", "fr", "in", "de"]}
+                            inputClass="form-control-lg"
+                            containerStyle={{
+                              width: "100%",
+                            }}
+                            inputStyle={{
+                              fontSize: 16,
+                              fontWeight: 300,
+                              width: "100%",
+                            }}
                           />
                         </div>
                         <div className="col-md-6">
@@ -196,32 +247,37 @@ const BookingPage = () => {
                         </div>
                       </div>
 
-                      <div className="form-check confirm-info">
+                      <div className="form-check confirm-info mt-2">
                         <input
                           className="form-check-input"
                           type="checkbox"
                           value=""
                           id="flexCheckDefault"
+                          onChange={handleCheckboxChange}
                         />
                         <label
-                          className="form-check-label text-color-secondary"
+                          className="form-check-label text-color-secondary ms-1"
                           htmlFor="flexCheckDefault"
                         >
-                          By clicking , I agree with Flight Expert{" "}
+                          By clicking , I agree with Flight Expert
                           <span>
-                            <span>
-                              {" "}
-                              <a href="#" className="privacy"></a>Privacy Policy
-                            </span>
-                          </span>{" "}
-                          and Terms & Conditions.
+                            <a href="" className="mx-2">
+                              Privacy Policy
+                            </a>
+                          </span>
+                          and
+                          <span>
+                            <a href="" className="ms-2">
+                              Terms & Conditions
+                            </a>
+                          </span>
                         </label>
                       </div>
 
                       <button
                         type="submit"
-                        className="btn btn-primary mt-3"
-                        disabled={isSubmitting}
+                        className="btn btn-primary mt-4 mb-3"
+                        disabled={!isChecked || isSubmitting}
                       >
                         {isSubmitting ? "Submitting..." : "Continue to Payment"}
                       </button>
@@ -232,16 +288,81 @@ const BookingPage = () => {
             </div>
           </div>
 
-          <div className="col-md-4 mt-5">
-            <div className="row shadow p-3 d-flex align-content-center align-items-center">
-              <div className="col-md-4">
-                <img src="images/package.jpg" alt="" className="img-fluid" />
+          <div className="col-md-4">
+            <div className="m-4">
+              <div className="row shadow p-3 d-flex align-content-center align-items-center">
+                <div className="col-4">
+                  <img src="images/package.jpg" alt="" className="img-fluid" />
+                </div>
+                <div className="col-8">
+                  <p className=" m-0 fw-semibold text-color-primary">
+                    {esimData.title}
+                  </p>
+                  <p className="m-0 pt-2 text-color-primary">
+                    BDT {esimData.amount}
+                  </p>
+                </div>
+                <div className="my-1">
+                  <hr />
+                </div>
+                <div className="col-12">
+                  <p className="m-0 font-size-lg fw-semibold text-color-secondary">
+                    eSIM Price Summary
+                  </p>
+                </div>
+
+                <div className="container">
+                  <div className="row d-flex align-content-between align-items-center mt-3">
+                    <div className="col-6">
+                      <p className="m-0">{esimData.title}</p>
+                    </div>
+                    <div className="col-6 text-end">
+                      <p className="m-0 font-size-md">
+                        BDT{" "}
+                        <span className="font-size-xl fw-semibold">
+                          {esimData.amount}
+                        </span>{" "}
+                      </p>
+                      <p className="m-0 font-size-md">(1*{esimData.amount})</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="">
+                  <hr />
+                </div>
+                <div className="container">
+                  <div className="row d-flex align-content-between align-items-center">
+                    <div className="col-6">
+                      <p className="m-0">Sub Total</p>
+                    </div>
+                    <div className="col-6 text-end">
+                      <p className="m-0 font-size-md">
+                        BDT{" "}
+                        <span className="font-size-xl fw-semibold">
+                          {esimData.amount}
+                        </span>{" "}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="container ">
+                  <div className="row d-flex align-content-between align-items-center mt-4 secondary-bg-color py-3 rounded-3">
+                    <div className="col-6">
+                      <p className="m-0 font-size-xl fw-semibold text-color-secondary">
+                        You Pay
+                      </p>
+                    </div>
+                    <div className="col-6 text-end">
+                      <p className="m-0 font-size-md">
+                        BDT{" "}
+                        <span className="font-size-xl fw-semibold">
+                          {esimData.amount}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="col-md-8">
-                <p className="fw-bold">1 GB - 7 Days (Prepaid)</p>
-                <p>BDT 567</p>
-              </div>
-              <hr />
             </div>
           </div>
         </div>

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const Accordionitem = () => {
   const [planSize, setPlanSize] = useState("");
@@ -29,6 +31,12 @@ const Accordionitem = () => {
     { value: "least-data", label: "Least Data" },
     { value: "lowest-price", label: "Lowest Price" },
   ];
+
+  const [phone, setPhone] = useState("");
+
+  const handleOnChange = (value) => {
+    setPhone(value);
+  };
 
   return (
     <div className="w-full max-w-2xl p-4 border rounded-lg shadow-sm">
@@ -123,6 +131,17 @@ const Accordionitem = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      <div>
+        <h3>Enter your phone number</h3>
+        <PhoneInput
+          country={"us"} // Default country
+          value={phone} // Controlled input value
+          onChange={handleOnChange} // Update state
+          enableSearch // Enable country search
+          preferredCountries={["us", "gb", "fr", "in", "de"]} // Set preferred countries
+        />
       </div>
     </div>
   );
