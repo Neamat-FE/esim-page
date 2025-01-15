@@ -90,7 +90,6 @@ const DataSection = () => {
   };
 
   // Ascending Descending Condition
-  const [plans, setPlans] = useState("");
 
   const handleCheckboxChange = (e) => {
     const checked = e.target.checked;
