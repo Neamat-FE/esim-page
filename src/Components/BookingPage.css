@@ -20,3 +20,7 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   text-decoration: none;
 }
+
+button :disabled {
+  color: #eb1933;
+}
