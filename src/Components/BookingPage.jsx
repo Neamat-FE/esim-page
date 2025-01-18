@@ -6,9 +6,10 @@ import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import TextInput from "./Textinput";
-import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import Accordionitem from "./Accordionitem";
+import SimPhoneInput from "./SimPhoneInput";
+import PaymentPage from "./PaymentPage";
+import PageHeading from "./PageHeading";
 
 const BookingPage = () => {
   const location = useLocation();
@@ -17,13 +18,15 @@ const BookingPage = () => {
   const validationSchema = Yup.object({
     fName: Yup.string()
       .required("First Name is required")
-      .matches(/^[A-Za-z]+$/, "Only alphabets are allowed"),
+      .matches(/^[A-Za-z]+$/, "Only alphabets are allowed")
+      .min(3, "Name must be at least 2 characters long"),
 
     lName: Yup.string()
       .required("Last Name is required")
-      .matches(/^[A-Za-z]+$/, "Only alphabets are allowed"),
+      .matches(/^[A-Za-z]+$/, "Only alphabets are allowed")
+      .min(3, "Name must be at least 2 characters long"),
 
-    phone: Yup.string().required("Phone Number is required"),
+    phone: Yup.string().required("Phone number is required"),
 
     email: Yup.string().email("Email in invalid").required("Email is required"),
   });
@@ -45,39 +48,7 @@ const BookingPage = () => {
       <Navbar />
       <div className="container">
         <div className="row mt-4">
-          <div className="col-12">
-            <div className="col-8">
-              <div className="row d-flex align-items-center justify-content-between">
-                <div className="col-md-6">
-                  <h3 className="primary-color font-size-xxxl fw-bold">
-                    Enter User Details
-                  </h3>
-                </div>
-                <div className="col-md-6 d-flex justify-content-md-end justify-content-start">
-                  <nav
-                    style={{ "--bs-breadcrumb-divider": "'>'" }}
-                    aria-label="breadcrumb"
-                  >
-                    <ol className="breadcrumb">
-                      <li className="breadcrumb-item">
-                        <a href="">eSim Selection</a>
-                      </li>
-                      <li
-                        className="breadcrumb-item active"
-                        aria-current="page"
-                      >
-                        Booking
-                      </li>
-                      <li className="breadcrumb-item text-color-secondary text-decoration-none">
-                        <a href="">Payment</a>
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <div className="col-4"></div>
-          </div>
+          <PageHeading />
           <div className="col-md-8">
             <div className="row d-flex align-items-center align-content-center mb-4 rounded shadow p-3 mt-4">
               <div className="col-md-3 col-sm-12">
@@ -159,7 +130,7 @@ const BookingPage = () => {
               <div className="col-md-2 text-end mt-4 "></div>
             </div>
 
-            <div className="row shadow mt-3 p-3">
+            <div className="row shadow mt-3 p-3 rounded-2">
               <div className="title-text ">
                 <h5 className="text-color-primary fw-bold">User Information</h5>
               </div>
@@ -202,37 +173,15 @@ const BookingPage = () => {
 
                       <div className="row">
                         <div className="col-md-6">
-                          {/* <TextInput
-                            label="Contact Number"
-                            name="contactNumber"
-                            type="number"
-                            placeholder="Enter Contact Number"
-                          /> */}
-                          <label
-                            htmlFor="phone"
-                            style={{
-                              fontSize: 14,
-                              fontWeight: "600",
-                              marginBottom: 10,
-                            }}
-                          >
-                            Contact Number{" "}
-                            <span className="text-danger">*</span>
-                          </label>
-                          <PhoneInput
-                            country={"bd"}
+                          <SimPhoneInput
                             name="phone"
-                            value={phone}
-                            onChange={handleOnChange}
+                            label="Phone Number"
+                            defaultCountry="bd"
                             enableSearch
-                            preferredCountries={["us", "gb", "fr", "in", "de"]}
-                            inputClass="form-control-lg"
-                            containerStyle={{
-                              width: "100%",
-                            }}
+                            country="bd"
                             inputStyle={{
                               fontSize: 16,
-                              fontWeight: 300,
+                              fontWeight: 400,
                               width: "100%",
                             }}
                           />
@@ -290,7 +239,7 @@ const BookingPage = () => {
 
           <div className="col-md-4">
             <div className="m-4">
-              <div className="row shadow p-3 d-flex align-content-center align-items-center">
+              <div className="row shadow rounded-2 p-3 d-flex align-content-center align-items-center">
                 <div className="col-4">
                   <img src="images/package.jpg" alt="" className="img-fluid" />
                 </div>
@@ -367,6 +316,7 @@ const BookingPage = () => {
           </div>
         </div>
       </div>
+      <PaymentPage />
     </div>
   );
 };

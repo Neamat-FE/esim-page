@@ -108,24 +108,17 @@
   color: white;
 }
 
+/* Html Content Spacing Remove */
+
 .html-content p {
-  margin: 0; /* Removes top and bottom margins */
-  padding: 0; /* Removes padding if any */
-  line-height: 1.2; /* Adjusts the spacing between lines */
-}
-.html-content ul {
   margin: 0;
-  padding-left: 20px; /* Adds padding only for indentation */
-}
-.html-content li {
-  margin-bottom: 2px; /* Reduce spacing between list items */
+  padding: 0;
 }
 
-.toggle-icon {
-  width: 20px; /* Adjust size as needed */
-  transition: transform 0.3s ease;
-}
+.html-content {
+  display: flex;
+  flex-wrap: wrap;
 
-.toggle-icon .up {
-  transform: rotate(180deg); /* Rotates the arrow to point up */
+  padding-top: 20px;
+  line-height: 42px;
 }

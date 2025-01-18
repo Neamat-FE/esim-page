@@ -72,42 +72,60 @@ const SearchSection = () => {
           }
         >
           <div className="row ">
-            <form className="mt-3 col-md-8 d-flex align-items-center">
+            <form className="mt-3 col-md-8 d-flex align-items-center flex-wrap">
               <div className="form-check me-4">
                 <input
                   className="form-check-input"
                   type="radio"
+                  id="oneWay"
+                  name="tripType"
                   value="oneWay"
                   checked={tripType === "oneWay"}
                   onChange={handleTriptype}
                 />
-                <label className="form-check-label fw-semibold">One Way</label>
+                <label
+                  htmlFor="oneWay"
+                  className="form-check-label fw-semibold"
+                >
+                  One Way
+                </label>
               </div>
+
               <div className="form-check me-4">
                 <input
                   className="form-check-input"
                   type="radio"
+                  id="roundTrip"
+                  name="tripType"
                   value="roundTrip"
                   checked={tripType === "roundTrip"}
                   onChange={handleTriptype}
                 />
-                <label className="form-check-label fw-semibold">
+                <label
+                  htmlFor="roundTrip"
+                  className="form-check-label fw-semibold"
+                >
                   Round Trip
                 </label>
               </div>
-              <div className="form-check">
+
+              <div className="form-check me-4">
                 <input
                   className="form-check-input"
                   type="radio"
+                  id="multiCity"
+                  name="tripType"
                   value="multiCity"
                   checked={tripType === "multiCity"}
                   onChange={handleTriptype}
                 />
-                <label className="form-check-label fw-semibold">
+                <label
+                  htmlFor="multiCity"
+                  className="form-check-label fw-semibold"
+                >
                   Multi City
                 </label>
               </div>
-              <div className="col-md-4"></div>
             </form>
           </div>
           <div className="row mt-4">
@@ -311,42 +329,60 @@ const SearchSection = () => {
             </span>
           }
         >
-          <form className="mt-4 col-md-8 d-flex align-items-center">
+          <form className="mt-4 col-md-8 d-flex align-items-center flex-wrap">
             <div className="form-check me-4">
               <input
                 className="form-check-input"
                 type="radio"
+                id="localEsim"
+                name="esimType"
                 value="localEsim"
                 checked={esimType === "localEsim"}
                 onChange={handleEsimtype}
               />
-              <label className="form-check-label fw-semibold">Local eSIM</label>
+              <label
+                htmlFor="localEsim"
+                className="form-check-label fw-semibold"
+              >
+                Local eSIM
+              </label>
             </div>
+
             <div className="form-check me-4">
               <input
                 className="form-check-input"
                 type="radio"
+                id="regionalEsim"
+                name="esimType"
                 value="regionalEsim"
                 checked={esimType === "regionalEsim"}
                 onChange={handleEsimtype}
               />
-              <label className="form-check-label fw-semibold">
+              <label
+                htmlFor="regionalEsim"
+                className="form-check-label fw-semibold"
+              >
                 Regional eSIM
               </label>
             </div>
+
             <div className="form-check">
               <input
                 className="form-check-input"
                 type="radio"
+                id="globalEsim"
+                name="esimType"
                 value="globalEsim"
                 checked={esimType === "globalEsim"}
                 onChange={handleEsimtype}
               />
-              <label className="form-check-label fw-semibold">
+              <label
+                htmlFor="globalEsim"
+                className="form-check-label fw-semibold"
+              >
                 Global eSIM
               </label>
             </div>
-            <div className="col-md-4"></div>
           </form>
           <div className="row mt-4">
             <div className="col-md-4">
