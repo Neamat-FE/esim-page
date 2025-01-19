@@ -83,3 +83,20 @@ select[form-select]:focus option:checked {
 .form-select {
   background-image: none;
 }
+
+.react-datepicker__input-container input {
+  background-color: transparent;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding: 0;
+}
+.react-datepicker__input-container input:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+}

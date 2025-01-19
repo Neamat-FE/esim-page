@@ -6,26 +6,24 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import "./SearchSection.css";
 import countryData from "./esimLocalCountry.json";
-import EsimItem from "./EsimItem";
+import DateView from "./DateView";
+import BookingClass from "./BookingClass";
 
 const SearchSection = () => {
-  const [tripType, setTriptype] = useState("");
+  const [tripType, setTripType] = useState("");
   const [esimLocalCountryList, setEsimCountry] = useState([]);
-  function handleTriptype(e) {
-    setTriptype(e.target.value);
+  function handleTripType(e) {
+    setTripType(e.target.value);
   }
 
-  const [esimType, setEsimtype] = useState("");
-  function handleEsimtype(e) {
-    setEsimtype(e.target.value);
+  const [esimType, setEsimType] = useState("");
+  function handleEsimType(e) {
+    setEsimType(e.target.value);
   }
 
   useEffect(() => {
     setEsimCountry(countryData.data);
   }, []);
-
-  // Select view
-  const [locationDetails, setLocationDetails] = useState("");
 
   const locations = [
     { value: "", label: "Select Location", details: "" },
@@ -43,12 +41,48 @@ const SearchSection = () => {
     { value: "sylhet", label: "Sylhet", details: "Osmani International" },
   ];
 
-  const handleLocationChange = (event) => {
+  const [fromLocationDetails, setFromLocationDetails] = useState("");
+
+  const handleFromLocation = (event) => {
     const selectedLocation = locations.find(
       (loc) => loc.value === event.target.value
     );
-    setLocationDetails(selectedLocation?.details || "");
+    setFromLocationDetails(selectedLocation?.details || "");
   };
+
+  const [toLocationDetails, setToLocationDetails] = useState("");
+  const handleToLocation = (event) => {
+    const selectedLocation = locations.find(
+      (loc) => loc.value === event.target.value
+    );
+    setToLocationDetails(selectedLocation?.details || "");
+  };
+
+  const [date, setDate] = useState(null);
+
+  const dayName = date
+    ? date.toLocaleDateString("en-US", { weekday: "long" })
+    : "Select a date";
+
+  // Booking Class
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [travelers, setTravelers] = useState({
+    adults: 1,
+    children: 0,
+    kids: 0,
+    infants: 0,
+  });
+  const [bookingClass, setBookingClass] = useState("economy");
+
+  const updateTraveler = (type, increment) => {
+    setTravelers((prev) => ({
+      ...prev,
+      [type]: Math.max(0, prev[type] + (increment ? 1 : -1)),
+    }));
+  };
+
+  const totalTravelers = Object.values(travelers).reduce((a, b) => a + b, 0);
 
   return (
     <div className="container mt-5 searchview">
@@ -81,7 +115,7 @@ const SearchSection = () => {
                   name="tripType"
                   value="oneWay"
                   checked={tripType === "oneWay"}
-                  onChange={handleTriptype}
+                  onChange={handleTripType}
                 />
                 <label
                   htmlFor="oneWay"
@@ -99,7 +133,7 @@ const SearchSection = () => {
                   name="tripType"
                   value="roundTrip"
                   checked={tripType === "roundTrip"}
-                  onChange={handleTriptype}
+                  onChange={handleTripType}
                 />
                 <label
                   htmlFor="roundTrip"
@@ -117,7 +151,7 @@ const SearchSection = () => {
                   name="tripType"
                   value="multiCity"
                   checked={tripType === "multiCity"}
-                  onChange={handleTriptype}
+                  onChange={handleTripType}
                 />
                 <label
                   htmlFor="multiCity"
@@ -135,7 +169,7 @@ const SearchSection = () => {
                   <small className="text-muted">From</small>
                   <select
                     className="form-select border-0 p-0 fw-bold fs-5"
-                    onChange={handleLocationChange}
+                    onChange={handleFromLocation}
                   >
                     {locations.map((location) => (
                       <option key={location.value} value={location.value}>
@@ -143,7 +177,7 @@ const SearchSection = () => {
                       </option>
                     ))}
                   </select>
-                  <small className="text-muted">{locationDetails}</small>
+                  <small className="text-muted">{fromLocationDetails}</small>
                 </div>
               </div>
             </div>
@@ -154,7 +188,7 @@ const SearchSection = () => {
                   <small className="text-muted">To</small>
                   <select
                     className="form-select border-0 p-0 fs-5 fw-semibold"
-                    onChange={handleLocationChange}
+                    onChange={handleToLocation}
                   >
                     {locations.map((location) => (
                       <option key={location.value} value={location.value}>
@@ -162,36 +196,246 @@ const SearchSection = () => {
                       </option>
                     ))}
                   </select>
-                  <small className="text-muted">{locationDetails}</small>
+                  <small className="text-muted">{toLocationDetails}</small>
                 </div>
               </div>
             </div>
 
             <div className="col-md-3 mb-3 mb-md-0">
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Works with selects"
-              >
-                <Form.Select aria-label="Floating label select example">
-                  <option>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </Form.Select>
-              </FloatingLabel>
+              <div className="row g-0">
+                <div className="col-6">
+                  <div className="form-group position-relative">
+                    <div className="card border rounded-start-4 rounded-0 py-2 ps-4">
+                      <small className="text-muted">
+                        Departure{" "}
+                        <span>
+                          <img
+                            src="images/arrow-down-black.png"
+                            alt=""
+                            className="img-fluid ms-2"
+                          />
+                        </span>
+                      </small>
+                      <DateView
+                        selectedDate={date}
+                        onChange={(selectedDate) => setDate(selectedDate)}
+                        minDate={new Date()}
+                        maxDate={new Date("2025-12-31")}
+                        placeholder="Pick a date"
+                      />
+                      <small className="text-muted">{dayName}</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-6">
+                  <div className="form-group position-relative">
+                    <div className="card border rounded-end-4 rounded-0 py-2 ps-4">
+                      <small className="text-muted">
+                        Return{" "}
+                        <span>
+                          <img
+                            src="images/arrow-down-black.png"
+                            alt=""
+                            className="img-fluid ms-2"
+                          />
+                        </span>
+                      </small>
+                      <DateView
+                        selectedDate={date}
+                        onChange={(selectedDate) => setDate(selectedDate)}
+                        minDate={new Date()}
+                        maxDate={new Date("2025-12-31")}
+                        placeholder="Pick a date"
+                      />
+                      <small className="text-muted">{dayName}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="col-md-3">
-              <FloatingLabel
-                controlId="floatingSelect"
-                label="Works with selects"
-              >
-                <Form.Select aria-label="Floating label select example">
-                  <option>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </Form.Select>
-              </FloatingLabel>
+
+            <div className="col-md-3 mb-3 mb-md-0">
+              <div className="card">
+                <div
+                  className="card-header bg-white py-3 cursor-pointer "
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <div className="d-flex justify-content-between align-items-center">
+                    <div>
+                      <small className="text-muted">
+                        Travelers & Booking Class
+                      </small>
+                      <p className="mb-0 fw-medium">
+                        {totalTravelers} Traveler
+                        {totalTravelers !== 1 ? "s" : ""}
+                      </p>
+                      <small className="text-muted text-capitalize">
+                        {bookingClass}
+                      </small>
+                    </div>
+                    <span className="ms-2">{isExpanded ? "▲" : "▼"}</span>
+                  </div>
+                </div>
+
+                {isExpanded && (
+                  <div className="card-body">
+                    <div className="mb-4">
+                      <h6 className="mb-3">Travelers</h6>
+
+                      {/* Adults */}
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                          <p className="mb-0">Adults</p>
+                          <small className="text-muted">
+                            12 years and above
+                          </small>
+                        </div>
+                        <div className="d-flex align-items-center gap-3">
+                          <button
+                            onClick={() => updateTraveler("adults", false)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                            disabled={travelers.adults <= 1}
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{travelers.adults}</span>
+                          <button
+                            onClick={() => updateTraveler("adults", true)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Children */}
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                          <p className="mb-0">Children</p>
+                          <small className="text-muted">
+                            5 - under 12 years
+                          </small>
+                        </div>
+                        <div className="d-flex align-items-center gap-3">
+                          <button
+                            onClick={() => updateTraveler("children", false)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                            disabled={travelers.children <= 0}
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{travelers.children}</span>
+                          <button
+                            onClick={() => updateTraveler("children", true)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Kids */}
+                      <div className="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                          <p className="mb-0">Kids</p>
+                          <small className="text-muted">
+                            2 - under 5 years
+                          </small>
+                        </div>
+                        <div className="d-flex align-items-center gap-3">
+                          <button
+                            onClick={() => updateTraveler("kids", false)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                            disabled={travelers.kids <= 0}
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{travelers.kids}</span>
+                          <button
+                            onClick={() => updateTraveler("kids", true)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Infant */}
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <p className="mb-0">Infant</p>
+                          <small className="text-muted">
+                            below 2 years (on lap)
+                          </small>
+                        </div>
+                        <div className="d-flex align-items-center gap-3">
+                          <button
+                            onClick={() => updateTraveler("infants", false)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                            disabled={travelers.infants <= 0}
+                          >
+                            -
+                          </button>
+                          <span className="mx-2">{travelers.infants}</span>
+                          <button
+                            onClick={() => updateTraveler("infants", true)}
+                            className="btn btn-outline-secondary rounded-circle p-1"
+                            style={{ width: "32px", height: "32px" }}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mb-4">
+                      <h6 className="mb-3">Booking Class</h6>
+                      <div className="d-flex flex-column gap-2">
+                        {[
+                          "economy",
+                          "premium economy",
+                          "business",
+                          "first class",
+                        ].map((className) => (
+                          <div className="form-check" key={className}>
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="bookingClass"
+                              id={className}
+                              value={className}
+                              checked={bookingClass === className}
+                              onChange={(e) => setBookingClass(e.target.value)}
+                            />
+                            <label
+                              className="form-check-label text-capitalize"
+                              htmlFor={className}
+                            >
+                              {className}
+                            </label>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => setIsExpanded(false)}
+                      className="btn btn-danger w-100"
+                    >
+                      Done
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </Tab>
@@ -338,7 +582,7 @@ const SearchSection = () => {
                 name="esimType"
                 value="localEsim"
                 checked={esimType === "localEsim"}
-                onChange={handleEsimtype}
+                onChange={handleEsimType}
               />
               <label
                 htmlFor="localEsim"
@@ -356,7 +600,7 @@ const SearchSection = () => {
                 name="esimType"
                 value="regionalEsim"
                 checked={esimType === "regionalEsim"}
-                onChange={handleEsimtype}
+                onChange={handleEsimType}
               />
               <label
                 htmlFor="regionalEsim"
@@ -374,7 +618,7 @@ const SearchSection = () => {
                 name="esimType"
                 value="globalEsim"
                 checked={esimType === "globalEsim"}
-                onChange={handleEsimtype}
+                onChange={handleEsimType}
               />
               <label
                 htmlFor="globalEsim"
