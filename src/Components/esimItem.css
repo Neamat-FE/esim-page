@@ -62,6 +62,15 @@
 
 /* Button */
 
+.btn-default {
+  color: #333333;
+  font-size: 14px;
+  background-color: #edf2f4;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
 .btn-primary {
   background-color: #eb1933;
   color: white;
@@ -83,6 +92,23 @@
   color: #eb1933;
   background-color: #fff;
   cursor: not-allowed;
+}
+
+.btn-primary-small {
+  background-color: #eb1933;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.btn-primary-small:hover {
+  background-color: white;
+  color: #eb1933;
+  border: 1px solid #eb1933;
+  border-radius: 6px;
+  padding: 10px 16px;
 }
 
 /* shadow */

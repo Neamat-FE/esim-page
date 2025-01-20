@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const PageHeading = () => {
+const PageHeading = ({ pageTitle, active }) => {
   return (
     <div>
       <div className="col-12">
@@ -8,7 +9,8 @@ const PageHeading = () => {
           <div className="row d-flex align-items-center justify-content-between">
             <div className="col-md-6">
               <h3 className="primary-color font-size-xxxl fw-bold">
-                Enter User Details
+                {/* Enter User Details */}
+                {pageTitle}
               </h3>
             </div>
             <div className="col-md-6 d-flex justify-content-md-end justify-content-start">
@@ -17,14 +19,38 @@ const PageHeading = () => {
                 aria-label="breadcrumb"
               >
                 <ol className="breadcrumb">
-                  <li className="breadcrumb-item">
-                    <a href="">eSim Selection</a>
+                  <li
+                    className={`breadcrumb-item ${
+                      active === "eSim Selection" ? "active" : ""
+                    }`}
+                  >
+                    {active === "eSim Selection" ? (
+                      "eSim Selection"
+                    ) : (
+                      <Link to="/esim-selection">eSim Selection</Link>
+                    )}
                   </li>
-                  <li className="breadcrumb-item active" aria-current="page">
-                    Booking
+                  <li
+                    className={`breadcrumb-item ${
+                      active === "Booking" ? "active" : ""
+                    }`}
+                  >
+                    {active === "Booking" ? (
+                      "Booking"
+                    ) : (
+                      <Link to="/booking">Booking</Link>
+                    )}
                   </li>
-                  <li className="breadcrumb-item text-color-secondary text-decoration-none">
-                    <a href="">Payment</a>
+                  <li
+                    className={`breadcrumb-item ${
+                      active === "Payment" ? "active" : ""
+                    }`}
+                  >
+                    {active === "Payment" ? (
+                      "Payment"
+                    ) : (
+                      <Link to="/payment">Payment</Link>
+                    )}
                   </li>
                 </ol>
               </nav>

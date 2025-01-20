@@ -1,17 +1,20 @@
 import React from "react";
 import Navbar from "./Navbar";
 import "./BookingPage.css";
-import { useLocation } from "react-router-dom";
+import { Navigate, NavigationType, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import TextInput from "./Textinput";
 import "react-phone-input-2/lib/style.css";
 import SimPhoneInput from "./SimPhoneInput";
-import PaymentPage from "./PaymentPage";
+
 import PageHeading from "./PageHeading";
+import { useNavigate } from "react-router-dom";
+import EsimItem from "./EsimItem";
 
 const BookingPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { esimData } = location.state || {};
 
@@ -48,7 +51,12 @@ const BookingPage = () => {
       <Navbar />
       <div className="container">
         <div className="row mt-4">
-          <PageHeading />
+          <div className="col-12">
+            <PageHeading pageTitle="Enter User Details" active="Booking" />
+          </div>
+        </div>
+
+        <div className="row">
           <div className="col-md-8">
             <div className="row d-flex align-items-center align-content-center mb-4 rounded shadow p-3 mt-4">
               <div className="col-md-3 col-sm-12">
@@ -144,9 +152,12 @@ const BookingPage = () => {
                     email: "",
                   }}
                   validationSchema={validationSchema}
-                  onSubmit={(values, { resetForm }) => {
-                    console.log("Form Submitted:", values);
-                    resetForm(); // Clear the form after submission
+                  onSubmit={(esimItem, { resetForm }) => {
+                    console.log("Form Submitted:", esimData);
+
+                    navigate("/payment", { state: { esimData: esimData } });
+
+                    resetForm();
                   }}
                 >
                   {({ isSubmitting }) => (
@@ -316,7 +327,6 @@ const BookingPage = () => {
           </div>
         </div>
       </div>
-      <PaymentPage />
     </div>
   );
 };
