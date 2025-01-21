@@ -114,7 +114,7 @@ const PaymentPage = () => {
                   <img
                     src={optionItem.logo}
                     alt=""
-                    className="img-fluid w-25"
+                    className="img-fluid w-25 "
                   />
                   <span className="ms-3 fw-semibold">{optionItem.name}</span>
                 </label>
@@ -173,10 +173,8 @@ const PaymentPage = () => {
         <PageHeading pageTitle="Payment Method" active="Payment" />
 
         <div className="row">
-          {/* Left Column */}
           <div className="col-md-8">
             <div className="row d-flex align-items-center mb-4 rounded shadow p-3 mt-4">
-              {/* Payment Method Buttons */}
               <div className="col-12">
                 <div className="gap-2">
                   {methods.map((method) => (
@@ -195,7 +193,6 @@ const PaymentPage = () => {
                 </div>
               </div>
 
-              {/* Dynamic Views */}
               <div className="col-12">
                 {activeMethod === "card" && renderCardView()}
                 {activeMethod === "wallet" && renderWalletView()}

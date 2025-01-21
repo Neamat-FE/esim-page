@@ -3,9 +3,8 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import EsimItem from "./EsimItem";
 import esimData from "./esimData.json";
-import Accordionitem from "./Accordionitem";
+
 import "./DataSection.css";
-import BookingPage from "./BookingPage";
 
 const DataSection = () => {
   const [result, setResult] = useState(esimData.data);

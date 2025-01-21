@@ -7,7 +7,6 @@ import { useState } from "react";
 import "./SearchSection.css";
 import countryData from "./esimLocalCountry.json";
 import DateView from "./DateView";
-import BookingClass from "./BookingClass";
 
 const SearchSection = () => {
   const [tripType, setTripType] = useState("");
