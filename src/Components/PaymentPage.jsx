@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import PageHeading from "./PageHeading";
 import paymentResponse from "./payment.json";
+import savedPaymentResponse from "./savedPayment.json";
 
 const PaymentPage = () => {
   const mobileWalletOptions = paymentResponse.options.BDT.filter(
@@ -22,10 +23,11 @@ const PaymentPage = () => {
     { id: "others", label: "Others & EMI" },
   ];
 
-  const [selectedCard, setSelectedCard] = useState("saved-card");
+  const [selectedCard, setSelectedCard] = useState("visa");
 
   const [selectedWallet, setSelectedWallet] = useState("bKash");
 
+  const others = ["Visa/Mastercard", "SSL Commerz"];
   const [selectedOthers, setSelectedOthers] = useState("Visa/Mastercard");
 
   // Render dynamic views for each payment method
@@ -33,38 +35,40 @@ const PaymentPage = () => {
     <div className="row saved-method">
       <div className="col-md-8">
         <h5 className="my-4 fw-semibold">Saved Payment Method</h5>
-        <div
-          className={`border rounded-3 ${
-            selectedCard === "saved-card" ? "border-danger" : ""
-          }`}
-          onClick={() => setSelectedCard("saved-card")}
-          style={{ cursor: "pointer" }}
-        >
-          <div className="mx-4 my-2 d-flex align-items-center justify-content-between">
-            <div>
-              <input
-                type="radio"
-                name="card-selection"
-                id="saved-card"
-                defaultChecked
-                className="form-check-input me-3"
-                checked={selectedCard === "saved-card"}
-                onChange={() => setSelectedCard("saved-card")}
-              />
-              <img
-                src="images/mastervisa.png"
-                alt="Visa"
-                className="img-fluid w-50"
-              />
-            </div>
-            <div className="text-end">
+
+        {savedPaymentResponse.data.card.map((card) => (
+          <div
+            key={card.id}
+            className={`border rounded-3 mb-3 ${
+              selectedCard === card ? "border-danger" : ""
+            }`}
+            onClick={() => setSelectedCard(card)}
+            style={{ cursor: "pointer", height: "70px" }}
+          >
+            <div className="mx-4 my-2 d-flex align-items-center align-content-center justify-content-between    justify-content-center">
               <div>
-                <span className="text-gray-600">••••••••••••1111</span>
+                <input
+                  type="radio"
+                  name="card-selection"
+                  className="form-check-input me-3"
+                  checked={selectedCard === card}
+                  onChange={() => setSelectedCard(card)}
+                />
+                <img src={card.logo} alt="" className="img-fluid" />
               </div>
-              <p className="text-gray-400 text-sm mt-1 m-0">Visa</p>
+              <div className="text-end">
+                <div>
+                  <span className="text-gray-600 m-0">
+                    {card.card_number_masked}
+                  </span>
+                </div>
+                <p className="text-gray-400 text-sm mt-1 m-0 fw-semibold">
+                  {card.card_type}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        ))}
 
         <div className="border rounded mt-3">
           <div className="mx-4 my-3 d-flex align-items-center justify-content-between">
@@ -94,10 +98,10 @@ const PaymentPage = () => {
             className={`border rounded-3 mb-3 ${
               selectedWallet === optionItem ? "border-danger" : ""
             }`}
-            onClick={() => setSelectedWallet(optionItem)} // Handle selection when the field is clicked
-            style={{ cursor: "pointer" }} // Add a pointer cursor for better UX
+            onClick={() => setSelectedWallet(optionItem)}
+            style={{ cursor: "pointer" }}
           >
-            <div className="mx-3 my-2 d-flex align-items-center justify-content-between">
+            <div className="mx-3 my-3 d-flex align-items-center justify-content-between">
               <div className="d-flex align-items-center">
                 <label className="d-flex align-items-center w-100 m-0">
                   <input
@@ -135,10 +139,10 @@ const PaymentPage = () => {
             className={`border rounded-3 mb-3 ${
               selectedOthers === other ? "border-danger" : ""
             }`}
-            onClick={() => setSelectedOthers(other)} // Handle selection when the field is clicked
-            style={{ cursor: "pointer" }} // Add a pointer cursor for better UX
+            onClick={() => setSelectedOthers(other)}
+            style={{ cursor: "pointer", height: "64px" }}
           >
-            <div className="mx-3 my-3 d-flex align-items-center justify-content-between">
+            <div className="mx-3 my-2 d-flex align-items-center justify-content-between">
               <div className="d-flex align-items-center">
                 <label className="d-flex align-items-center w-100 m-0">
                   <input
@@ -200,7 +204,6 @@ const PaymentPage = () => {
             </div>
           </div>
 
-          {/* Right Column - Payment Summary */}
           <div className="col-md-4">
             <div className="m-4">
               <div className="row shadow rounded-2 p-3 d-flex align-content-center align-items-center">

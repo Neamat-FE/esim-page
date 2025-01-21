@@ -1,0 +1,18 @@
+{
+  "status": 1,
+  "data": {
+    "card": [
+      {
+        "id": "01J63YR3AMQRBGJDERC1M59B6C",
+        "card_number_masked": "************1111",
+        "expiry_month": "12",
+        "expiry_year": "25",
+        "card_holder_name": "neamat",
+        "card_type": "Visa",
+        "logo": "https://fe-pub.s3.ap-southeast-1.amazonaws.com/payment-options/mastervisa.png",
+        "alias": null
+      }
+    ],
+    "bkashNumber": []
+  }
+}
