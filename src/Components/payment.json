@@ -1,0 +1,205 @@
+{
+  "status": 1,
+  "bookingId": "FL471VQM1759",
+  "data": {
+    "flightDetails": {
+      "fareSummary": {
+        "breakdown": {
+          "ADT": {
+            "baseFareAmount": 3080,
+            "totalBaseFareAmount": 3080,
+            "fareAmount": 4070,
+            "totalFareAmount": 4070,
+            "taxAmount": 990,
+            "totalTaxAmount": 990,
+            "paxCount": 1
+          }
+        },
+        "totalTaxAmount": 990,
+        "totalFareAmount": 4070,
+        "totalBaseFareAmount": 3080
+      }
+    },
+    "flightCombination": [
+      {
+        "flightDetails": [
+          {
+            "technicalStop": [],
+            "flightInformation": {
+              "productDateTime": {
+                "timeOfDeparture": "19:45",
+                "dateOfDeparture": "300125",
+                "dateOfDepartureString": "Thu, 30 Jan 2025",
+                "timeOfArrival": "20:45",
+                "dateOfArrival": "300125",
+                "dateOfArrivalString": "Thu, 30 Jan 2025",
+                "segmentTime": "1 hour 0 minute",
+                "stopOverTime": ""
+              },
+              "location": [
+                {
+                  "airportName": "Hazrat Shahjalal International Airport",
+                  "city": "Dhaka",
+                  "countryName": "BD",
+                  "locationId": "DAC",
+                  "terminal": "D"
+                },
+                {
+                  "airportName": "Patenga",
+                  "city": "Chittagong",
+                  "countryName": "BD",
+                  "locationId": "CGP",
+                  "terminal": ""
+                }
+              ],
+              "companyId": {
+                "marketingCarrier": "Biman Bangladesh Airlines",
+                "marketingCarrierCode": "BG",
+                "operatingCarrier": "Biman Bangladesh Airlines",
+                "operatingCarrierCode": "BG"
+              },
+              "flightOrtrainNumber": "617",
+              "productDetail": {
+                "equipmentType": "DH8"
+              },
+              "addProductDetail": {
+                "cabinClass": "G"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "addonData": null,
+    "esimData": []
+  },
+  "options": {
+    "isGcc": false,
+    "BDT": [
+      {
+        "id": 2,
+        "code": "brac",
+        "name": "Visa/Mastercard",
+        "description": "Brac PG",
+        "logo": "https://airlineimages.s3.ap-southeast-1.amazonaws.com/mastervisa.png",
+        "active": "1",
+        "group": "ONLINE_BANKING",
+        "option_category": "Others",
+        "currency_type": "BDT",
+        "order": 1,
+        "gateway_charge": "1.5",
+        "created_at": null,
+        "updated_at": "2024-01-03T06:41:23.000000Z",
+        "group_name": "VISA_MASTER_MFS"
+      },
+      {
+        "id": 19,
+        "code": "sebl",
+        "name": "SEBL",
+        "description": "SEBL",
+        "logo": "https://test-southeastbank.mtf.gateway.mastercard.com/asset/managed/resource/checkout/theme/default/logoImagePage",
+        "active": "1",
+        "group": "ONLINE_BANKING",
+        "option_category": "CARDS",
+        "currency_type": "BDT",
+        "order": 1,
+        "gateway_charge": null,
+        "created_at": "2023-11-13T04:07:54.000000Z",
+        "updated_at": "2024-01-03T06:41:23.000000Z",
+        "group_name": "VISA_MASTER_MFS"
+      },
+      {
+        "id": 1,
+        "code": "bkash",
+        "name": "bKash",
+        "description": "bkash wallet",
+        "logo": "https://airlineimages.s3.ap-southeast-1.amazonaws.com/bkash.png",
+        "active": "1",
+        "group": "ONLINE_BANKING",
+        "option_category": "MFS",
+        "currency_type": "BDT",
+        "order": 2,
+        "gateway_charge": "1.5",
+        "created_at": null,
+        "updated_at": "2024-01-03T06:41:23.000000Z",
+        "group_name": "VISA_MASTER_MFS"
+      },
+      {
+        "id": 4,
+        "code": "nagad",
+        "name": "Nagad",
+        "description": "NAGAD",
+        "logo": "https://airlineimages.s3.ap-southeast-1.amazonaws.com/nagad.png",
+        "active": "1",
+        "group": "ONLINE_BANKING",
+        "option_category": "MFS",
+        "currency_type": "BDT",
+        "order": 3,
+        "gateway_charge": "0.8",
+        "created_at": null,
+        "updated_at": "2024-01-03T06:41:23.000000Z",
+        "group_name": "VISA_MASTER_MFS"
+      },
+      {
+        "id": 3,
+        "code": "sslc",
+        "name": "SSL Commerz",
+        "description": "SSL COMMERZ",
+        "logo": "https://airlineimages.s3.ap-southeast-1.amazonaws.com/sslc.png",
+        "active": "1",
+        "group": "CREDIT/DEBIT",
+        "option_category": "Others",
+        "currency_type": "BDT",
+        "order": 4,
+        "gateway_charge": null,
+        "created_at": null,
+        "updated_at": "2024-01-03T06:41:23.000000Z",
+        "group_name": "AMEX_OTHERS"
+      },
+      {
+        "id": 11,
+        "code": "dbblrct",
+        "name": "DBBL Rocket",
+        "description": "DBBL Rocket",
+        "logo": "https://airlineimages.s3.ap-southeast-1.amazonaws.com/dbblrct.png",
+        "active": "1",
+        "group": "ONLINE_BANKING",
+        "option_category": "MFS",
+        "currency_type": "BDT",
+        "order": 11,
+        "gateway_charge": "1.1",
+        "created_at": "2022-09-01T05:50:30.000000Z",
+        "updated_at": "2024-01-03T06:41:23.000000Z",
+        "group_name": "VISA_MASTER_MFS"
+      },
+      {
+        "id": 12,
+        "code": "dbblnexdeb",
+        "name": "DBBL Nexus Pay",
+        "description": "DBBL Nexus Pay",
+        "logo": "https://airlineimages.s3.ap-southeast-1.amazonaws.com/dbblnxpay.png",
+        "active": "1",
+        "group": "CREDIT/DEBIT",
+        "option_category": "CARDS",
+        "currency_type": "BDT",
+        "order": 12,
+        "gateway_charge": "1.1",
+        "created_at": "2022-09-01T05:50:30.000000Z",
+        "updated_at": "2024-01-03T06:41:23.000000Z",
+        "group_name": "AMEX_OTHERS"
+      }
+    ],
+    "USD": [],
+    "AED": []
+  },
+  "conversionRates": {
+    "USD": 124,
+    "AED": 34,
+    "QAR": 33.5,
+    "KWD": 33.5,
+    "SAR": 33.5,
+    "BHD": 33.5,
+    "OMR": 200,
+    "BDT": 1
+  }
+}

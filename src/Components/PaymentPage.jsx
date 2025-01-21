@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import PageHeading from "./PageHeading";
+import paymentResponse from "./payment.json";
 
 const PaymentPage = () => {
+  const mobileWalletOptions = paymentResponse.options.BDT.filter(
+    (optionItem) => optionItem.option_category === "MFS"
+  );
+  const othersEmiOptions = paymentResponse.options.BDT.filter(
+    (optionItem) => optionItem.option_category === "CARDS"
+  );
+
   const location = useLocation();
   const { esimData } = location.state || {};
 
@@ -14,12 +22,24 @@ const PaymentPage = () => {
     { id: "others", label: "Others & EMI" },
   ];
 
+  const [selectedCard, setSelectedCard] = useState("saved-card");
+
+  const [selectedWallet, setSelectedWallet] = useState("bKash");
+
+  const [selectedOthers, setSelectedOthers] = useState("Visa/Mastercard");
+
   // Render dynamic views for each payment method
   const renderCardView = () => (
     <div className="row saved-method">
       <div className="col-md-8">
         <h5 className="my-4 fw-semibold">Saved Payment Method</h5>
-        <div className="border rounded">
+        <div
+          className={`border rounded-3 ${
+            selectedCard === "saved-card" ? "border-danger" : ""
+          }`}
+          onClick={() => setSelectedCard("saved-card")}
+          style={{ cursor: "pointer" }}
+        >
           <div className="mx-4 my-2 d-flex align-items-center justify-content-between">
             <div>
               <input
@@ -28,6 +48,8 @@ const PaymentPage = () => {
                 id="saved-card"
                 defaultChecked
                 className="form-check-input me-3"
+                checked={selectedCard === "saved-card"}
+                onChange={() => setSelectedCard("saved-card")}
               />
               <img
                 src="images/mastervisa.png"
@@ -54,6 +76,9 @@ const PaymentPage = () => {
             </div>
           </div>
         </div>
+        <button className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4">
+          Use Card
+        </button>
       </div>
     </div>
   );
@@ -61,27 +86,41 @@ const PaymentPage = () => {
   const renderWalletView = () => (
     <div>
       <h5 className="my-4 fw-semibold">Mobile Wallet</h5>
-      <p>Wallet payment options will be displayed here.</p>
+
       <div className="col-md-8">
-        {["bKash", "Nagad", "Rocket", "Dbbl"].map((wallet) => (
-          <div key={wallet} className="border rounded mb-3">
+        {mobileWalletOptions.map((optionItem) => (
+          <div
+            key={optionItem.id}
+            className={`border rounded-3 mb-3 ${
+              selectedWallet === optionItem ? "border-danger" : ""
+            }`}
+            onClick={() => setSelectedWallet(optionItem)} // Handle selection when the field is clicked
+            style={{ cursor: "pointer" }} // Add a pointer cursor for better UX
+          >
             <div className="mx-3 my-2 d-flex align-items-center justify-content-between">
               <div className="d-flex align-items-center">
-                <input
-                  type="radio"
-                  name="wallet-selection"
-                  className="form-check-input me-3"
-                />
-                <img
-                  src="images/payment/jcb.png"
-                  alt={wallet}
-                  className="img-fluid"
-                />
-                <span className="ms-3 fw-semibold">{wallet}</span>
+                <label className="d-flex align-items-center w-100 m-0">
+                  <input
+                    type="radio"
+                    name="wallet-selection"
+                    className="form-check-input me-3"
+                    onChange={() => setSelectedWallet(optionItem)}
+                    checked={selectedWallet === optionItem}
+                  />
+                  <img
+                    src={optionItem.logo}
+                    alt=""
+                    className="img-fluid w-25"
+                  />
+                  <span className="ms-3 fw-semibold">{optionItem.name}</span>
+                </label>
               </div>
             </div>
           </div>
         ))}
+        <button className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-2">
+          Confirm and pay
+        </button>
       </div>
     </div>
   );
@@ -89,7 +128,37 @@ const PaymentPage = () => {
   const renderOthersView = () => (
     <div>
       <h5 className="my-4 fw-semibold">Others & EMI</h5>
-      <p>Other payment options, including EMI, will be displayed here.</p>
+      <div className="col-md-8">
+        {othersEmiOptions.map((other) => (
+          <div
+            key={other.id}
+            className={`border rounded-3 mb-3 ${
+              selectedOthers === other ? "border-danger" : ""
+            }`}
+            onClick={() => setSelectedOthers(other)} // Handle selection when the field is clicked
+            style={{ cursor: "pointer" }} // Add a pointer cursor for better UX
+          >
+            <div className="mx-3 my-3 d-flex align-items-center justify-content-between">
+              <div className="d-flex align-items-center">
+                <label className="d-flex align-items-center w-100 m-0">
+                  <input
+                    type="radio"
+                    name="wallet-selection"
+                    className="form-check-input me-3"
+                    onChange={() => selectedOthers(other)}
+                    checked={selectedOthers === other}
+                  />
+                  <img src={other.logo} alt="" className="img-fluid" />
+                  <span className="ms-3 fw-semibold">{other.name}</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        ))}
+        <button className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-2">
+          Confirm and pay
+        </button>
+      </div>
     </div>
   );
 
