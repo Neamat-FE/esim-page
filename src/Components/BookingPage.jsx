@@ -11,7 +11,6 @@ import SimPhoneInput from "./SimPhoneInput";
 
 import PageHeading from "./PageHeading";
 import { useNavigate } from "react-router-dom";
-import EsimItem from "./EsimItem";
 
 const BookingPage = () => {
   const navigate = useNavigate();
@@ -49,264 +48,274 @@ const BookingPage = () => {
   return (
     <div>
       <Navbar />
+      <PageHeading pageTitle="Enter User Details" active="Booking" />
       <div className="container">
-        <div className="row mt-4">
-          <div className="col-12">
-            <PageHeading pageTitle="Enter User Details" active="Booking" />
-          </div>
-        </div>
-
         <div className="row">
           <div className="col-md-8">
-            <div className="row d-flex align-items-center align-content-center mb-4 rounded shadow p-3 mt-4">
-              <div className="col-md-3 col-sm-12">
-                <div className="img-section">
-                  <img
-                    src={esimData.operator.image.url}
-                    alt=""
-                    className="img-fluid"
-                  />
-                </div>
-              </div>
-              <div className="col-md-7 mt-4 mt-md-0">
-                <p className="m-0 text-color-secondary fw-semibold font-size-xl">
-                  {esimData.title}
-                </p>
-                <div className="row d-flex justify-content-center align-items-center">
-                  <div className="col-6">
-                    <div className="d-flex align-items-center align-content-center mt-2">
-                      <img src="images/global.png" alt="" />
-                      <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
-                        Coverage :{" "}
-                        <span className="fw-normal text-color-secondary">
-                          {esimData.country.title}
-                        </span>{" "}
-                      </p>
-                    </div>
-                    <div className="d-flex align-items-center align-content-center mt-2">
-                      <img src="images/call-calling.png" alt="" />
-                      <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
-                        Call :{" "}
-                        <span className="fw-normal text-color-secondary">
-                          {esimData.voice ?? "---"}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="d-flex align-items-center align-content-center mt-2">
-                      <img src="images/calendar.png" alt="" />
-                      <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
-                        Validity :{" "}
-                        <span className="fw-normal text-color-secondary">
-                          {esimData.day ?? "---"} Days
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="col-6 text-end align-content-end">
-                    <div className="d-flex align-items-center align-content-center mt-2">
-                      <img src="images/data.png" alt="" />
-                      <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
-                        Data :{" "}
-                        <span className="fw-normal text-color-secondary">
-                          {esimData.data ?? "---"}
-                        </span>{" "}
-                      </p>
-                    </div>
-                    <div className="d-flex align-items-center align-content-center mt-2">
-                      <img src="images/calendar.png" alt="" />
-                      <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
-                        Text :{" "}
-                        <span className="fw-normal text-color-secondary">
-                          {esimData.text ?? "---"}
-                        </span>
-                      </p>
-                    </div>
-                    <div className="d-flex align-items-center align-content-center mt-2">
-                      <img src="images/price.png" alt="" />
-                      <p className="m-0 ms-3 font-size-lg text-color-light fw-normal">
-                        Price :{" "}
-                        <span className="fw-normal text-color-secondary">
-                          BDT {esimData.amount}
-                        </span>
-                      </p>
-                    </div>
+            {/* Product Info Card */}
+            <div className="shadow p-4 rounded-2">
+              <div className="row d-flex align-items-center">
+                <div className="col-md-3 col-sm-12">
+                  <div className="img-section">
+                    <img
+                      src={esimData.operator.image.url}
+                      alt=""
+                      className="img-fluid"
+                    />
                   </div>
                 </div>
-              </div>
 
-              <div className="col-md-2 text-end mt-4 "></div>
+                <div className="col-md-7 mt-3 mt-md-0">
+                  <p className="m-0 text-color-secondary fw-semibold font-size-xxl">
+                    {esimData.title}
+                  </p>
+                  <div className="row mt-2 d-flex ">
+                    <div className="col-6">
+                      <div className="d-flex align-items-center mb-2">
+                        <img src="images/global.png" alt="" className="me-2" />
+                        <p className="m-0 font-size-lg text-color-light fw-normal">
+                          Coverage:{" "}
+                          <span className="fw-normal text-color-secondary">
+                            {esimData.country.title}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="d-flex align-items-center mb-2">
+                        <img
+                          src="images/call-calling.png"
+                          alt=""
+                          className="me-2"
+                        />
+                        <p className="m-0 font-size-lg text-color-light fw-normal">
+                          Call:{" "}
+                          <span className="fw-normal text-color-secondary">
+                            {esimData.voice ?? "---"}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <img
+                          src="images/calendar.png"
+                          alt=""
+                          className="me-2"
+                        />
+                        <p className="m-0 font-size-lg text-color-light fw-normal">
+                          Validity:{" "}
+                          <span className="fw-normal text-color-secondary">
+                            {esimData.day ?? "---"} Days
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="col-6">
+                      <div className="d-flex align-items-center mb-2">
+                        <img src="images/data.png" alt="" className="me-2" />
+                        <p className="m-0 font-size-lg text-color-light fw-normal">
+                          Data:{" "}
+                          <span className="fw-normal text-color-secondary">
+                            {esimData.data ?? "---"}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="d-flex align-items-center mb-2">
+                        <img
+                          src="images/calendar.png"
+                          alt=""
+                          className="me-2"
+                        />
+                        <p className="m-0 font-size-lg text-color-light fw-normal">
+                          Text:{" "}
+                          <span className="fw-normal text-color-secondary">
+                            {esimData.text ?? "---"}
+                          </span>
+                        </p>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <img src="images/price.png" alt="" className="me-2" />
+                        <p className="m-0 font-size-lg text-color-light fw-normal">
+                          Price:{" "}
+                          <span className="fw-normal text-color-secondary">
+                            BDT {esimData.amount}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-2"></div>
+              </div>
             </div>
 
-            <div className="row shadow mt-3 p-3 rounded-2">
-              <div className="title-text ">
-                <h5 className="text-color-primary fw-bold">User Information</h5>
-              </div>
+            {/* User Information Form */}
+            <div className="row mt-4">
+              <div className="col-12">
+                <div className="shadow p-4 rounded-2">
+                  <div className="title-text mb-4">
+                    <h5 className="text-color-primary fw-bold m-0">
+                      User Information
+                    </h5>
+                  </div>
 
-              <div className="col-md-12 mt-3">
-                <Formik
-                  initialValues={{
-                    fName: "",
-                    lName: "",
-                    phone: "",
-                    email: "",
-                  }}
-                  validationSchema={validationSchema}
-                  onSubmit={(esimItem, { resetForm }) => {
-                    console.log("Form Submitted:", esimData);
+                  <Formik
+                    initialValues={{
+                      fName: "",
+                      lName: "",
+                      phone: "",
+                      email: "",
+                    }}
+                    validationSchema={validationSchema}
+                    onSubmit={(esimItem, { resetForm }) => {
+                      console.log("Form Submitted:", esimData);
+                      navigate("/payment", { state: { esimData: esimData } });
+                      resetForm();
+                    }}
+                  >
+                    {({ isSubmitting }) => (
+                      <Form>
+                        <div className="row mb-1">
+                          <div className="col-md-6">
+                            <TextInput
+                              label="First Name"
+                              name="fName"
+                              type="text"
+                              placeholder="Enter First name"
+                            />
+                          </div>
 
-                    navigate("/payment", { state: { esimData: esimData } });
-
-                    resetForm();
-                  }}
-                >
-                  {({ isSubmitting }) => (
-                    <Form>
-                      <div className="row">
-                        <div className="col-md-6">
-                          <TextInput
-                            label="First Name"
-                            name="fName"
-                            type="text"
-                            placeholder="Enter First name"
-                          />
+                          <div className="col-md-6">
+                            <TextInput
+                              label="Last Name"
+                              name="lName"
+                              type="text"
+                              placeholder="Enter Last name"
+                            />
+                          </div>
                         </div>
 
-                        <div className="col-md-6">
-                          <TextInput
-                            label="Last Name"
-                            name="lName"
-                            type="text"
-                            placeholder="Enter Last name"
-                          />
+                        <div className="row ">
+                          <div className="col-md-6">
+                            <SimPhoneInput
+                              name="phone"
+                              label="Phone Number"
+                              defaultCountry="bd"
+                              enableSearch
+                              country="bd"
+                              inputStyle={{
+                                fontSize: 16,
+                                fontWeight: 400,
+                                width: "100%",
+                              }}
+                            />
+                          </div>
+                          <div className="col-md-6">
+                            <TextInput
+                              label="Email Address"
+                              name="email"
+                              type="email"
+                              placeholder="Enter your email"
+                            />
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="row">
-                        <div className="col-md-6">
-                          <SimPhoneInput
-                            name="phone"
-                            label="Phone Number"
-                            defaultCountry="bd"
-                            enableSearch
-                            country="bd"
-                            inputStyle={{
-                              fontSize: 16,
-                              fontWeight: 400,
-                              width: "100%",
-                            }}
+                        <div className="form-check mt-2 confirm-info">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id="flexCheckDefault"
+                            onChange={handleCheckboxChange}
                           />
-                        </div>
-                        <div className="col-md-6">
-                          <TextInput
-                            label="Email Address"
-                            name="email"
-                            type="email"
-                            placeholder="Enter your email"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="form-check confirm-info mt-2">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="flexCheckDefault"
-                          onChange={handleCheckboxChange}
-                        />
-                        <label
-                          className="form-check-label text-color-secondary ms-1"
-                          htmlFor="flexCheckDefault"
-                        >
-                          By clicking , I agree with Flight Expert
-                          <span>
+                          <label
+                            className="form-check-label text-color-secondary ms-2"
+                            htmlFor="flexCheckDefault"
+                          >
+                            By clicking, I agree with Flight Expert
                             <a href="" className="mx-2">
                               Privacy Policy
                             </a>
-                          </span>
-                          and
-                          <span>
+                            and
                             <a href="" className="ms-2">
                               Terms & Conditions
                             </a>
-                          </span>
-                        </label>
-                      </div>
+                          </label>
+                        </div>
 
-                      <button
-                        type="submit"
-                        className="btn btn-primary mt-4 mb-3"
-                        disabled={!isChecked || isSubmitting}
-                      >
-                        {isSubmitting ? "Submitting..." : "Continue to Payment"}
-                      </button>
-                    </Form>
-                  )}
-                </Formik>
+                        <button
+                          type="submit"
+                          className="btn btn-primary w-100 mt-4"
+                          disabled={!isChecked || isSubmitting}
+                        >
+                          {isSubmitting
+                            ? "Submitting..."
+                            : "Continue to Payment"}
+                        </button>
+                      </Form>
+                    )}
+                  </Formik>
+                </div>
               </div>
             </div>
           </div>
-
-          <div className="col-md-4">
-            <div className="m-4">
-              <div className="row shadow rounded-2 p-3 d-flex align-content-center align-items-center">
+          <div className="col-md-4 mt-4 mt-md-0 ">
+            <div className="shadow p-4 rounded-2">
+              <div className="img-section d-flex align-items-center">
                 <div className="col-4">
                   <img src="images/package.jpg" alt="" className="img-fluid" />
                 </div>
-                <div className="col-8">
-                  <p className=" m-0 fw-semibold text-color-primary">
+                <div className="col-8 ms-3">
+                  <p className="m-0 fw-semibold text-color-primary">
                     {esimData.title}
                   </p>
                   <p className="m-0 pt-2 text-color-primary">
                     BDT {esimData.amount}
                   </p>
                 </div>
-                <div className="my-1">
-                  <hr />
+              </div>
+              <div className="my-1">
+                <hr />
+              </div>
+              <div className="col-12">
+                <p className="m-0 font-size-lg fw-semibold text-color-secondary">
+                  eSIM Price Summary
+                </p>
+              </div>
+
+              <div className="data-pricing d-flex align-items-center mt-3">
+                <div className="col-6">
+                  <p className="m-0">{esimData.title}</p>
                 </div>
-                <div className="col-12">
-                  <p className="m-0 font-size-lg fw-semibold text-color-secondary">
-                    eSIM Price Summary
+                <div className="col-6 text-end">
+                  <p className="m-0 font-size-md">
+                    BDT{" "}
+                    <span className="font-size-xl fw-semibold">
+                      {esimData.amount}
+                    </span>
+                  </p>
+                  <p className="m-0 font-size-md">(1*{esimData.amount})</p>
+                </div>
+              </div>
+
+              <div className="my-1">
+                <hr />
+              </div>
+
+              <div className="sub-total d-flex align-content-between align-items-center">
+                <div className="col-6">
+                  <p className="m-0">Sub Total</p>
+                </div>
+                <div className="col-6 text-end">
+                  <p className="m-0 font-size-md">
+                    BDT{" "}
+                    <span className="font-size-xl fw-semibold">
+                      {esimData.amount}
+                    </span>
                   </p>
                 </div>
+              </div>
 
-                <div className="container">
-                  <div className="row d-flex align-content-between align-items-center mt-3">
-                    <div className="col-6">
-                      <p className="m-0">{esimData.title}</p>
-                    </div>
-                    <div className="col-6 text-end">
-                      <p className="m-0 font-size-md">
-                        BDT{" "}
-                        <span className="font-size-xl fw-semibold">
-                          {esimData.amount}
-                        </span>{" "}
-                      </p>
-                      <p className="m-0 font-size-md">(1*{esimData.amount})</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="">
-                  <hr />
-                </div>
-                <div className="container">
-                  <div className="row d-flex align-content-between align-items-center">
-                    <div className="col-6">
-                      <p className="m-0">Sub Total</p>
-                    </div>
-                    <div className="col-6 text-end">
-                      <p className="m-0 font-size-md">
-                        BDT{" "}
-                        <span className="font-size-xl fw-semibold">
-                          {esimData.amount}
-                        </span>{" "}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="container ">
-                  <div className="row d-flex align-content-between align-items-center mt-4 secondary-bg-color py-3 rounded-3">
+              <div className="row mt-3">
+                <div className="container-fluid secondary-bg-color rounded">
+                  <div className="paying-price d-flex align-items-center align-content-between py-3">
                     <div className="col-6">
                       <p className="m-0 font-size-xl fw-semibold text-color-secondary">
                         You Pay

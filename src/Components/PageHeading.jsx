@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PageHeading = ({ pageTitle, active }) => {
   return (
-    <div>
+    <div className="container my-3">
       <div className="col-12">
         <div className="col-8">
           <div className="row d-flex align-items-center justify-content-between">
