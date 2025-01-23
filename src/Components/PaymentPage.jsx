@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import PageHeading from "./PageHeading";
 import paymentResponse from "./payment.json";
 import savedPaymentResponse from "./savedPayment.json";
+import Selectpassenger from "./Refund/Selectpassenger";
+import { useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
   const mobileWalletOptions = paymentResponse.options.BDT.filter(
@@ -74,6 +76,12 @@ const PaymentPage = () => {
     } else {
       alert("Please select a payment option.");
     }
+  };
+
+  const navigate = useNavigate();
+
+  const handleSelectClick = () => {
+    navigate("/select_passenger");
   };
 
   // Render dynamic views for each payment method
@@ -192,8 +200,8 @@ const PaymentPage = () => {
             onClick={() => setSelectedOthers(other)}
             style={{ cursor: "pointer", height: "64px" }}
           >
-            <div className="mx-3 my-2 d-flex align-items-center justify-content-between">
-              <div className="d-flex align-items-center align-content-center">
+            <div className="mx-3 my-2 d-flex align-items-center">
+              <div className="">
                 <label className="d-flex align-items-center align-content-center w-100 m-0">
                   <input
                     type="radio"
@@ -337,6 +345,12 @@ const PaymentPage = () => {
             </div>
           </div>
         </div>
+        <button
+          className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4"
+          onClick={handleSelectClick}
+        >
+          Select
+        </button>
       </div>
     </div>
   );
