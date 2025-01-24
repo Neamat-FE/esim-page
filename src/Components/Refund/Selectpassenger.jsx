@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Selectedpassenger.css";
-import { useState } from "react";
 
 const Selectpassenger = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
+  const [selectedPassenger, setSelectedPassenger] = useState("");
 
   const handleCheckboxChange = (checkboxName) => {
     setSelectedCheckbox((prev) =>
@@ -11,14 +12,35 @@ const Selectpassenger = () => {
     );
   };
 
+  const handlePassengerChange = (event) => {
+    setSelectedPassenger(event.target.value);
+  };
+
+  const handleConfirm = () => {
+    handleSelectClick();
+    const selectedData = {
+      selectedCheckbox,
+      selectedPassenger,
+     
+    };
+
+    console.log("Confirmation data:", selectedData);
+
+  };
+    const navigate = useNavigate();
+  
+    const handleSelectClick = () => {
+      navigate("/pnr_page");
+    };
+
   return (
     <div className="container">
-      <div class="my-5 shadow">
-        <div class="row">
-          <div class="col m-4">
+      <div className="my-5 shadow">
+        <div className="row">
+          <div className="col m-4">
             <h3>Select Passenger for Refund</h3>
             <form>
-              <div class="form-group">
+              <div className="form-group">
                 <h5>Select passenger</h5>
                 <div className="d-flex align-items-center">
                   <div className="form-check mt-2 confirm-info me-3">
@@ -54,16 +76,19 @@ const Selectpassenger = () => {
                   </div>
 
                   <div className="">
-                    <label for="selectSpecificPassenger">
+                    <label htmlFor="selectSpecificPassenger">
                       Select Specific Passenger
                     </label>
                     <select
-                      class="form-control mb-3"
+                      className="form-control mb-3"
                       id="selectSpecificPassenger"
+                      disabled={selectedCheckbox !== "specificPassenger"}
+                      value={selectedPassenger}
+                      onChange={handlePassengerChange}
                     >
                       <option value="">Select Passenger</option>
-                      <option value="">Select Passenger-1</option>
-                      <option value="">Select Passenger-2</option>
+                      <option value="1">Select Passenger-1</option>
+                      <option value="2">Select Passenger-2</option>
                     </select>
                   </div>
                 </div>
@@ -75,11 +100,15 @@ const Selectpassenger = () => {
                   </p>
                 </div>
               </div>
-              <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-secondary me-3">
+              <div className="d-flex justify-content-end">
+                <button type="button" className="btn btn-outline-secondary me-3">
                   Cancel
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleConfirm}
+                >
                   Confirm
                 </button>
               </div>

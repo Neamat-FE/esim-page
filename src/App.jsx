@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
 import PaymentPage from "./Components/PaymentPage";
 import Selectpassenger from "./Components/Refund/Selectpassenger";
+import PnrDetailsPage from "./Components/Refund/PnrDetailsPage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/select_passenger" element={<Selectpassenger />} />
+          <Route path="/pnr_page" element={<PnrDetailsPage />} />
         </Routes>
       </Router>
     </div>
