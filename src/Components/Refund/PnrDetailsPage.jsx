@@ -30,7 +30,7 @@ const PnrDetailsPage = () => {
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">Booking Reference / PNR</h5>
-                <p className="card-text">TKJULK</p>
+                <p className="card-text">TKJULK dhaka city</p>
               </div>
             </div>
           </div>
