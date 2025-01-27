@@ -1,15 +1,15 @@
 /* Text Color Component */
 
-.text-color-primary {
+.font-color-primary {
   color: #212529 !important;
 }
-.text-color-secondary {
+.font-color-secondary {
   color: #52556f !important;
 }
-.text-color-light {
+.font-color-light {
   color: #6e7491 !important;
 }
-.text-color-white {
+.font-color-white {
   color: #ffffff !important;
 }
 

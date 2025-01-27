@@ -80,8 +80,11 @@ const PaymentPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSelectClick = () => {
+  const handlePnrClick = () => {
     navigate("/select_passenger");
+  };
+  const handleRefundClick = () => {
+    navigate("/pnr_refund");
   };
 
   // Render dynamic views for each payment method
@@ -347,9 +350,15 @@ const PaymentPage = () => {
         </div>
         <button
           className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4"
-          onClick={handleSelectClick}
+          onClick={handlePnrClick}
         >
-          Select
+          Change PNR/Ticket
+        </button>
+        <button
+          className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
+          onClick={handleRefundClick}
+        >
+          Refund
         </button>
       </div>
     </div>

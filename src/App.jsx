@@ -6,6 +6,7 @@ import "react-phone-input-2/lib/style.css";
 import PaymentPage from "./Components/PaymentPage";
 import Selectpassenger from "./Components/Refund/Selectpassenger";
 import PnrDetailsPage from "./Components/Refund/PnrDetailsPage";
+import PnrRefund from "./Components/Refund/PnrRefund";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/select_passenger" element={<Selectpassenger />} />
           <Route path="/pnr_page" element={<PnrDetailsPage />} />
+          <Route path="/pnr_refund" element={<PnrRefund />} />
         </Routes>
       </Router>
     </div>

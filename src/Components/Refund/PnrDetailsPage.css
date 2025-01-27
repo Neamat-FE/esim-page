@@ -1,0 +1,20 @@
+.dashed {
+  /* border-bottom: dashed 1px #747474; */
+  border: 1px dashed #747474;
+}
+
+.custom-datepicker {
+  height: 48px;
+  width: 348px !important;
+  border: 1px solid #d4d4d4 !important;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: white; /* Custom red background */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-datepicker::placeholder {
+  color: #4b4b4b;
+  font-weight: 400;
+}
