@@ -84,7 +84,7 @@ const PaymentPage = () => {
     navigate("/select_passenger");
   };
   const handleRefundClick = () => {
-    navigate("/pnr_refund");
+    navigate("/refund_select");
   };
 
   // Render dynamic views for each payment method

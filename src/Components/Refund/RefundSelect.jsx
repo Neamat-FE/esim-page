@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Selectedpassenger.css";
 
-const Selectpassenger = () => {
+const RefundSelect = () => {
   const navigate = useNavigate();
 
   const passengers = [
@@ -33,7 +33,7 @@ const Selectpassenger = () => {
     // console.log("checked", checkboxName);
     console.log("passengerItem", passengers);
     console.log("passengerItem", selectedPassengerItem);
-    navigate("/pnr_page", {
+    navigate("/pnr_refund", {
       state: {
         passengerItem:
           selectedPassenger === "allPassenger"
@@ -58,7 +58,7 @@ const Selectpassenger = () => {
           <div className="col-8 shadow rounded-3">
             <div className="m-4">
               <h3 className="mb-4 text-color-primary fw-semibold font-size-xxxl">
-                Select for Change PNR/Ticket
+                Select Passenger for Refund
               </h3>
               <form>
                 <div className="form-group">
@@ -166,4 +166,4 @@ const Selectpassenger = () => {
   );
 };
 
-export default Selectpassenger;
+export default RefundSelect;

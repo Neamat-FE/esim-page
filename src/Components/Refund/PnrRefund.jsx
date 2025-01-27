@@ -7,9 +7,16 @@ const PnrDetailsPage = () => {
   const location = useLocation();
   const { passengerItem } = location.state || {};
 
-  const displayPassengers = Array.isArray(passengerItem)
-    ? passengerItem.map((passenger) => passenger.name).join(", ")
-    : passengerItem?.name;
+  // Convert single passenger to array format for consistent handling
+  const passengerListFix = Array.isArray(passengerItem)
+    ? passengerItem
+    : passengerItem
+    ? [passengerItem]
+    : [];
+
+  const displayPassengers = passengerListFix
+    .map((passenger) => passenger.name)
+    .join(", ");
 
   const [newDepartureDate, setNewDepartureDate] = useState("12/05/2025");
   const [bookingClass, setBookingClass] = useState("");
@@ -67,39 +74,41 @@ const PnrDetailsPage = () => {
                       24 feb 2024
                     </p>
                   </div>
-                  {/* <div className="card-body">
+                  <div className="card-body">
                     <h6 className="card-title font-size-lg  font-color-secondary">
                       Selected Passenger
                     </h6>
                     <p className="card-text fw-semibold font-color-primary fw-bold mt-2">
                       {displayPassengers}
                     </p>
-                  </div> */}
+                  </div>
                 </div>
+
                 <div className="mt-4">
-                  <table class="table table-bordered">
+                  <table className="table table-bordered">
                     <thead>
                       <tr>
                         <th scope="col">Passenger</th>
                         <th scope="col">Cancellation Fee</th>
-                        <th scope="col"></th>
+                        <th scope="col">Contact</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+                      {passengerListFix.length > 0 ? (
+                        passengerListFix.map((passenger, index) => (
+                          <tr key={index}>
+                            <td>{passenger.name || "N/A"}</td>
+                            <td>{passenger.cancellationFee || "N/A"}</td>
+                            <td>{passenger.contact || "N/A"}</td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan="3" className="text-center">
+                            No passenger data available
+                          </td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>
