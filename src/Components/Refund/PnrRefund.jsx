@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./PnrDetailsPage.css";
 import { useLocation } from "react-router-dom";
+
 import DatePicker from "react-datepicker";
 
-const PnrDetailsPage = () => {
+const PnrDetailsPage = ({ back }) => {
   const location = useLocation();
   const { passengerItem } = location.state || {};
 
@@ -34,7 +35,7 @@ const PnrDetailsPage = () => {
   };
 
   const handleBackClick = () => {
-    console.log("Back button clicked");
+    back(true);
   };
 
   const [isChecked, setIsChecked] = useState(false);

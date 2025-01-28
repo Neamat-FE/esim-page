@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Selectedpassenger.css";
 
-const RefundSelect = () => {
+const RefundSelect = ({ onSwitchToPnr }) => {
   const navigate = useNavigate();
 
   const passengers = [
@@ -12,6 +12,8 @@ const RefundSelect = () => {
     { value: "3", name: "Doe", gender: "Male" },
     { value: "4", name: "John", gender: "Female" },
   ];
+
+  // const [onSwitchToPnr, setOnSwitchToPnr] = useState(false);
 
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
   const handleCheckboxChange = (checkboxName) => {
@@ -44,7 +46,14 @@ const RefundSelect = () => {
   };
 
   const handleConfirm = () => {
-    handleSelectClick();
+    onSwitchToPnr(false);
+    passengerItem =
+      selectedPassenger === "allPassenger" ? passengers : selectedPassengerItem;
+    // console.log("passengerItem", passengerItem);
+    // console.log("passengers", passengers);
+    // console.log("selectedPassengerItem", selectedPassengerItem);
+
+    // handleSelectClick();
     const selectedData = {
       selectedCheckbox,
       selectedPassenger,
@@ -53,9 +62,9 @@ const RefundSelect = () => {
 
   return (
     <div className="container">
-      <div className="my-5">
+      <div className="my-3">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-8 shadow rounded-3">
+          <div className="col-12 rounded-3">
             <div className="m-4">
               <h3 className="mb-4 text-color-primary fw-semibold font-size-xxxl">
                 Select Passenger for Refund

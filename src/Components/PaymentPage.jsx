@@ -6,8 +6,18 @@ import paymentResponse from "./payment.json";
 import savedPaymentResponse from "./savedPayment.json";
 import Selectpassenger from "./Refund/Selectpassenger";
 import { useNavigate } from "react-router-dom";
+import ModalPage from "./ModalPage";
+import Modal from "react-modal";
+import RefundSelect from "./Refund/RefundSelect";
+import PnrDetailsPage from "./Refund/PnrRefund";
 
 const PaymentPage = () => {
+  const [clickData, setClickData] = useState();
+  const [moveToPnr, setMoveToPnr] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isRefundOpen, setIsRefundOpen] = useState(true);
+  console.log("moveToPnr=> ", clickData);
+
   const mobileWalletOptions = paymentResponse.options.BDT.filter(
     (optionItem) => optionItem.option_category === "MFS"
   );
@@ -239,6 +249,7 @@ const PaymentPage = () => {
     <div className="mt-4">
       <Navbar />
       <PageHeading pageTitle="Payment Method" active="Payment" />
+
       <div className="container my-3">
         <div className="row">
           <div className="col-md-8">
@@ -348,17 +359,42 @@ const PaymentPage = () => {
             </div>
           </div>
         </div>
+
+        <div>
+          <ModalPage
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            title=""
+          >
+            {moveToPnr ? (
+              <RefundSelect
+                onSwitchToPnr={setMoveToPnr}
+                // passengerItem={setClickData}
+              />
+            ) : (
+              <PnrDetailsPage clickData={setMoveToPnr} />
+            )}
+          </ModalPage>
+        </div>
+
         <button
           className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4"
           onClick={handlePnrClick}
         >
           Change PNR/Ticket
         </button>
+
         <button
           className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
           onClick={handleRefundClick}
         >
           Refund
+        </button>
+        <button
+          className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Open Modal
         </button>
       </div>
     </div>
