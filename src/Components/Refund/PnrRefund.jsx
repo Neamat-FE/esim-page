@@ -4,16 +4,12 @@ import { useLocation } from "react-router-dom";
 
 import DatePicker from "react-datepicker";
 
-const PnrDetailsPage = ({ back }) => {
+const PnrDetailsPage = ({ back, data }) => {
   const location = useLocation();
   const { passengerItem } = location.state || {};
 
   // Convert single passenger to array format for consistent handling
-  const passengerListFix = Array.isArray(passengerItem)
-    ? passengerItem
-    : passengerItem
-    ? [passengerItem]
-    : [];
+  const passengerListFix = Array.isArray(data) ? data : data ? [data] : [];
 
   const displayPassengers = passengerListFix
     .map((passenger) => passenger.name)
@@ -30,9 +26,7 @@ const PnrDetailsPage = ({ back }) => {
     setBookingClass(e.target.value);
   };
 
-  const handleNextClick = () => {
-    console.log("Next button clicked");
-  };
+  const handleNextClick = () => {};
 
   const handleBackClick = () => {
     back(true);
@@ -50,9 +44,9 @@ const PnrDetailsPage = ({ back }) => {
 
   return (
     <div className="container">
-      <div className="my-5">
+      <div className="my-2">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-8 shadow">
+          <div className="col-12 ">
             <div className="m-4">
               <h3 className="mb-4 font-color-primary fw-semibold font-size-xxxl">
                 Ticket Refund
@@ -87,26 +81,26 @@ const PnrDetailsPage = ({ back }) => {
 
                 <div className="mt-4">
                   <table className="table table-bordered">
-                    <thead>
-                      <tr>
+                    <thead className="text-center">
+                      <tr className="table-active">
                         <th scope="col">Passenger</th>
                         <th scope="col">Cancellation Fee</th>
-                        <th scope="col">Contact</th>
+                        <th scope="col">Total Fee</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-center">
                       {passengerListFix.length > 0 ? (
                         passengerListFix.map((passenger, index) => (
                           <tr key={index}>
                             <td>{passenger.name || "N/A"}</td>
                             <td>{passenger.cancellationFee || "N/A"}</td>
-                            <td>{passenger.contact || "N/A"}</td>
+                            <td rowSpan="5">{passenger.contact || "N/A"}</td>
                           </tr>
                         ))
                       ) : (
                         <tr>
                           <td colSpan="3" className="text-center">
-                            No passenger data available
+                            No passenger Selected for Refund
                           </td>
                         </tr>
                       )}
@@ -132,7 +126,7 @@ const PnrDetailsPage = ({ back }) => {
                 className="btn btn-primary"
                 onClick={handleNextClick}
               >
-                Next
+                Confirm Refund
               </button>
             </div>
           </div>

@@ -17,6 +17,7 @@ const ModalPage = ({ isOpen, onClose, title, children, customStyles = {} }) => {
       padding: "20px",
       maxWidth: "900px",
       width: "90%",
+      borderRadius: "20px",
     },
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.75)",

@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Selectedpassenger.css";
 
-const RefundSelect = ({ onSwitchToPnr }) => {
+const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
   const navigate = useNavigate();
 
   const passengers = [
-    { value: "0", name: "Neamat", gender: "Male" },
-    { value: "1", name: "Diponkor", gender: "Male" },
-    { value: "2", name: "Zakir", gender: "Male" },
-    { value: "3", name: "Doe", gender: "Male" },
-    { value: "4", name: "John", gender: "Female" },
+    { value: "0", name: "Neamat", cancellationFee: "750" },
+    { value: "1", name: "Diponkor", cancellationFee: "450" },
+    { value: "2", name: "Zakir", cancellationFee: "350" },
+    { value: "3", name: "Doe", cancellationFee: "850" },
+    { value: "4", name: "John", cancellationFee: "1150" },
   ];
 
   // const [onSwitchToPnr, setOnSwitchToPnr] = useState(false);
@@ -32,9 +32,6 @@ const RefundSelect = ({ onSwitchToPnr }) => {
   };
 
   const handleSelectClick = () => {
-    // console.log("checked", checkboxName);
-    console.log("passengerItem", passengers);
-    console.log("passengerItem", selectedPassengerItem);
     navigate("/pnr_refund", {
       state: {
         passengerItem:
@@ -47,11 +44,9 @@ const RefundSelect = ({ onSwitchToPnr }) => {
 
   const handleConfirm = () => {
     onSwitchToPnr(false);
-    passengerItem =
-      selectedPassenger === "allPassenger" ? passengers : selectedPassengerItem;
-    // console.log("passengerItem", passengerItem);
-    // console.log("passengers", passengers);
-    // console.log("selectedPassengerItem", selectedPassengerItem);
+    passengerItem(
+      selectedPassenger === "allPassenger" ? passengers : selectedPassengerItem
+    );
 
     // handleSelectClick();
     const selectedData = {
@@ -62,7 +57,7 @@ const RefundSelect = ({ onSwitchToPnr }) => {
 
   return (
     <div className="container">
-      <div className="my-3">
+      <div className="my-1">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-12 rounded-3">
             <div className="m-4">

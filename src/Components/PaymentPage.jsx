@@ -16,7 +16,6 @@ const PaymentPage = () => {
   const [moveToPnr, setMoveToPnr] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRefundOpen, setIsRefundOpen] = useState(true);
-  console.log("moveToPnr=> ", clickData);
 
   const mobileWalletOptions = paymentResponse.options.BDT.filter(
     (optionItem) => optionItem.option_category === "MFS"
@@ -369,10 +368,10 @@ const PaymentPage = () => {
             {moveToPnr ? (
               <RefundSelect
                 onSwitchToPnr={setMoveToPnr}
-                // passengerItem={setClickData}
+                passengerItem={setClickData}
               />
             ) : (
-              <PnrDetailsPage clickData={setMoveToPnr} />
+              <PnrDetailsPage back={setMoveToPnr} data={clickData} />
             )}
           </ModalPage>
         </div>
