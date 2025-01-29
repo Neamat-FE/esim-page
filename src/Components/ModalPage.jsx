@@ -27,7 +27,7 @@ const ModalPage = ({ isOpen, onClose, title, children, customStyles = {} }) => {
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onClose}
+      // onRequestClose={onClose}
       style={{ ...defaultStyles, ...customStyles }}
       contentLabel="Reusable Modal"
     >
@@ -35,11 +35,21 @@ const ModalPage = ({ isOpen, onClose, title, children, customStyles = {} }) => {
         style={{
           display: "flex",
           justifyContent: "space-between",
-          marginBottom: "20px",
         }}
       >
-        {/* <h2>{title}</h2>
-        <button onClick={onClose}>✕</button> */}
+        <h2>{title}</h2>
+        <button
+          onClick={onClose}
+          className=""
+          style={{
+            backgroundColor: "white",
+            border: "1px solid #eb1933",
+            color: "#eb1933",
+            borderRadius: "50%",
+          }}
+        >
+          ✕
+        </button>
       </div>
       <div>{children}</div>
       {/* <div style={{ marginTop: "20px", textAlign: "right" }}>

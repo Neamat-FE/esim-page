@@ -10,10 +10,11 @@ import ModalPage from "./ModalPage";
 import Modal from "react-modal";
 import RefundSelect from "./Refund/RefundSelect";
 import PnrDetailsPage from "./Refund/PnrRefund";
+import RefundConfirmation from "./Refund/RefundConfirmation";
 
 const PaymentPage = () => {
   const [clickData, setClickData] = useState();
-  const [moveToPnr, setMoveToPnr] = useState(true);
+  const [moveToPnr, setMoveToPnr] = useState("refundSelect");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isRefundOpen, setIsRefundOpen] = useState(true);
 
@@ -365,13 +366,22 @@ const PaymentPage = () => {
             onClose={() => setIsModalOpen(false)}
             title=""
           >
-            {moveToPnr ? (
+            {moveToPnr == "refundSelect" ? (
               <RefundSelect
                 onSwitchToPnr={setMoveToPnr}
                 passengerItem={setClickData}
               />
+            ) : moveToPnr == "pnrRefund" ? (
+              <PnrDetailsPage
+                back={setMoveToPnr}
+                data={clickData}
+                onSwitchToPnr={setMoveToPnr}
+              />
             ) : (
-              <PnrDetailsPage back={setMoveToPnr} data={clickData} />
+              <RefundConfirmation
+                onSwitchToPnr={setMoveToPnr}
+                onClose={() => setIsModalOpen(false)}
+              />
             )}
           </ModalPage>
         </div>

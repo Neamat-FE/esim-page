@@ -43,7 +43,7 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
   };
 
   const handleConfirm = () => {
-    onSwitchToPnr(false);
+    onSwitchToPnr("pnrRefund");
     passengerItem(
       selectedPassenger === "allPassenger" ? passengers : selectedPassengerItem
     );
@@ -60,7 +60,7 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
       <div className="my-1">
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-12 rounded-3">
-            <div className="m-4">
+            <div className="m-2">
               <h3 className="mb-4 text-color-primary fw-semibold font-size-xxxl">
                 Select Passenger for Refund
               </h3>
