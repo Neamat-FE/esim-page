@@ -5,6 +5,11 @@ const RefundConfirmation = ({ onSwitchToPnr, onClose }) => {
     onClose(false);
     onSwitchToPnr("refundSelect");
   };
+
+  const handleManualRequest = () => {
+    onSwitchToPnr("manualRequestPage");
+  };
+
   return (
     <div>
       <div className="d-flex flex-column align-items-center text-center">
@@ -26,7 +31,11 @@ const RefundConfirmation = ({ onSwitchToPnr, onClose }) => {
         >
           Cancel
         </button>
-        <button type="button" className="btn btn-primary">
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleManualRequest}
+        >
           Manual Request
         </button>
       </div>
