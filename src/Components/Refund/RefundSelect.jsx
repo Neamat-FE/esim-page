@@ -143,29 +143,28 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
                               ))}
                           </select>
 
-                          {selectedPassengers.length > 0 && (
-                            <div className="mt-3">
-                              {selectedPassengers.map((passenger) => (
-                                <div
-                                  key={passenger.value}
-                                  className="d-flex justify-content-between align-items-center bg-light rounded p-2 mb-2"
+                          <div className="mt-3 d-flex flex-wrap gap-2">
+                            {selectedPassengers.map((passenger) => (
+                              <div
+                                key={passenger.value}
+                                className="d-flex align-items-center bg-light rounded p-2"
+                                style={{ gap: "8px" }} // Adjust spacing between elements
+                              >
+                                <span className="text-color-secondary">
+                                  {passenger.name}
+                                </span>
+                                <button
+                                  type="button"
+                                  className="btn btn-sm btn-outline-danger"
+                                  onClick={() =>
+                                    removePassenger(passenger.value)
+                                  }
                                 >
-                                  <span className="text-color-secondary">
-                                    {passenger.name}
-                                  </span>
-                                  <button
-                                    type="button"
-                                    className="btn btn-sm btn-outline-danger"
-                                    onClick={() =>
-                                      removePassenger(passenger.value)
-                                    }
-                                  >
-                                    ✕
-                                  </button>
-                                </div>
-                              ))}
-                            </div>
-                          )}
+                                  ✕
+                                </button>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       )}
                     </div>
