@@ -11,6 +11,7 @@ import Modal from "react-modal";
 import RefundSelect from "./Refund/RefundSelect";
 import PnrDetailsPage from "./Refund/PnrRefund";
 import RefundConfirmation from "./Refund/RefundConfirmation";
+import ManualRequestPage from "./ManualRequestpage";
 
 const PaymentPage = () => {
   const [clickData, setClickData] = useState();
@@ -377,8 +378,13 @@ const PaymentPage = () => {
                 data={clickData}
                 onSwitchToPnr={setMoveToPnr}
               />
-            ) : (
+            ) : moveToPnr == "refundConfirmation" ? (
               <RefundConfirmation
+                onSwitchToPnr={setMoveToPnr}
+                onClose={() => setIsModalOpen(false)}
+              />
+            ) : (
+              <ManualRequestPage
                 onSwitchToPnr={setMoveToPnr}
                 onClose={() => setIsModalOpen(false)}
               />

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./Selectedpassenger.css";
 
 const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
-  const navigate = useNavigate();
-
   const passengers = [
     { value: "0", name: "Neamat", cancellationFee: "750" },
     { value: "1", name: "Diponkor", cancellationFee: "450" },
@@ -13,45 +11,45 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
     { value: "4", name: "John", cancellationFee: "1150" },
   ];
 
-  // const [onSwitchToPnr, setOnSwitchToPnr] = useState(false);
-
   const [selectedCheckbox, setSelectedCheckbox] = useState(null);
+  const [selectedPassengers, setSelectedPassengers] = useState([]);
+  const [selectedPassenger, setSelectedPassenger] = useState("");
+
   const handleCheckboxChange = (checkboxName) => {
     setSelectedCheckbox((prev) =>
       prev === checkboxName ? null : checkboxName
     );
-    setSelectedPassenger(checkboxName);
+    if (checkboxName === "allPassenger") {
+      setSelectedPassengers([]);
+    }
   };
 
-  const [selectedPassenger, setSelectedPassenger] = useState("");
-  const [selectedPassengerItem, setSelectedPassengerItem] = useState();
   const handlePassengerChange = (event) => {
-    setSelectedPassenger(event.target.value);
+    const value = event.target.value;
+    if (!value) return;
 
-    setSelectedPassengerItem(passengers[event.target.selectedIndex - 1]);
+    const passenger = passengers.find((p) => p.value === value);
+    if (!selectedPassengers.some((p) => p.value === value)) {
+      setSelectedPassengers([...selectedPassengers, passenger]);
+    }
+    setSelectedPassenger(""); // Reset select after adding
   };
 
-  const handleSelectClick = () => {
-    navigate("/pnr_refund", {
-      state: {
-        passengerItem:
-          selectedPassenger === "allPassenger"
-            ? passengers
-            : selectedPassengerItem,
-      },
-    });
+  const removePassenger = (passengerValue) => {
+    setSelectedPassengers((prev) =>
+      prev.filter((p) => p.value !== passengerValue)
+    );
   };
 
   const handleConfirm = () => {
     onSwitchToPnr("pnrRefund");
     passengerItem(
-      selectedPassenger === "allPassenger" ? passengers : selectedPassengerItem
+      selectedCheckbox === "allPassenger" ? passengers : selectedPassengers
     );
 
-    // handleSelectClick();
     const selectedData = {
       selectedCheckbox,
-      selectedPassenger,
+      selectedPassengers,
     };
   };
 
@@ -59,18 +57,21 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
     <div className="container">
       <div className="my-1">
         <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-12 rounded-3">
-            <div className="m-2">
-              <h3 className="mb-4 text-color-primary fw-semibold font-size-xxxl">
-                Select Passenger for Refund
-              </h3>
-              <form>
-                <div className="form-group">
+          <div className="col-md-12 col-12 bg-white rounded-3 p-4">
+            <h3 className="mb-4 text-color-primary fw-semibold font-size-xxxl">
+              Select Passenger for Refund
+            </h3>
+
+            <form>
+              <div className="form-group">
+                <div className="col-md-12">
                   <h5 className="text-color-primary font-size-xxl">
-                    Select passenger
+                    Select Passenger
                   </h5>
-                  <div className="d-flex align-items-center">
-                    <div className="form-check mt-2 confirm-info me-4">
+                </div>
+                <div className="row align-items-center">
+                  <div className="col-md-3 col-12">
+                    <div className="form-check mt-2 confirm-info">
                       <input
                         className="form-check-input"
                         type="checkbox"
@@ -79,90 +80,130 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
                         onChange={() => handleCheckboxChange("allPassenger")}
                       />
                       <label
-                        className="form-check-label text-color-secondary ms-1 font-size-lg"
+                        className="form-check-label text-color-secondary ms-2"
                         htmlFor="allPassengerCheckbox"
                       >
                         All Passenger
                       </label>
                     </div>
+                  </div>
 
-                    <div className="specific-selection d-flex align-items-center justify-content-center">
-                      <div className="form-check mt-2 confirm-info me-4">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="specificPassengerCheckbox"
-                          checked={selectedCheckbox === "specificPassenger"}
-                          onChange={() =>
-                            handleCheckboxChange("specificPassenger")
-                          }
-                        />
-                        <label
-                          className="form-check-label text-color-secondary ms-1 font-size-lg"
-                          htmlFor="specificPassengerCheckbox"
-                        >
-                          Specific Passenger
-                        </label>
+                  <div className="col-md-9 col-12">
+                    <div className="row align-items-center">
+                      <div className="col-md-5 col-12">
+                        <div className="form-check mt-2 confirm-info">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            id="specificPassengerCheckbox"
+                            checked={selectedCheckbox === "specificPassenger"}
+                            onChange={() =>
+                              handleCheckboxChange("specificPassenger")
+                            }
+                          />
+                          <label
+                            className="form-check-label text-color-secondary ms-2"
+                            htmlFor="specificPassengerCheckbox"
+                          >
+                            Specific Passenger
+                          </label>
+                        </div>
                       </div>
 
                       {selectedCheckbox === "specificPassenger" && (
-                        <div className="">
+                        <div className="col-md-7 col-12 mt-3 mt-md-0">
                           <label
                             htmlFor="selectSpecificPassenger"
-                            className="mb-2"
+                            className="mb-2 d-block"
                           >
                             Select Specific Passenger
                           </label>
                           <select
-                            className="form-control mb-3"
+                            className="form-control"
                             id="selectSpecificPassenger"
-                            disabled={selectedCheckbox !== "specificPassenger"}
                             value={selectedPassenger}
                             onChange={handlePassengerChange}
-                            style={{ width: "400px", height: "44px" }}
+                            style={{ width: "100%", height: "44px" }}
                           >
                             <option value="">Select Passenger</option>
-                            {passengers.map((passenger) => (
-                              <option
-                                key={passenger.value}
-                                value={passenger.value}
-                              >
-                                {passenger.name}
-                              </option>
-                            ))}
+                            {passengers
+                              .filter(
+                                (p) =>
+                                  !selectedPassengers.some(
+                                    (sp) => sp.value === p.value
+                                  )
+                              )
+                              .map((passenger) => (
+                                <option
+                                  key={passenger.value}
+                                  value={passenger.value}
+                                >
+                                  {passenger.name}
+                                </option>
+                              ))}
                           </select>
+
+                          {selectedPassengers.length > 0 && (
+                            <div className="mt-3">
+                              {selectedPassengers.map((passenger) => (
+                                <div
+                                  key={passenger.value}
+                                  className="d-flex justify-content-between align-items-center bg-light rounded p-2 mb-2"
+                                >
+                                  <span className="text-color-secondary">
+                                    {passenger.name}
+                                  </span>
+                                  <button
+                                    type="button"
+                                    className="btn btn-sm btn-outline-danger"
+                                    onClick={() =>
+                                      removePassenger(passenger.value)
+                                    }
+                                  >
+                                    ✕
+                                  </button>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
                   </div>
-                  <div className="mt-3">
-                    <p className="text-color-secondary">
-                      <span className="fw-semibold primary-color font-size-xl">
-                        Note :{" "}
-                      </span>{" "}
-                      * Refund for specific passenger(s) will result in new PNR
-                      creation. Unchanged passengers(s) will remain on the
-                      mother PNR
-                    </p>
-                  </div>
                 </div>
-                <div className="d-flex justify-content-end">
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary me-3"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={handleConfirm}
-                  >
-                    Confirm
-                  </button>
-                </div>
-              </form>
-            </div>
+              </div>
+
+              <div className="mt-4">
+                <p className="text-color-secondary">
+                  <span className="fw-semibold primary-color font-size-xl">
+                    Note:
+                  </span>
+                  * Refund for specific passenger(s) will result in new PNR
+                  creation. Unchanged passenger(s) will remain on the mother
+                  PNR.
+                </p>
+              </div>
+
+              <div className="d-flex justify-content-end mt-4">
+                <button
+                  type="button"
+                  className="btn btn-outline-secondary me-3"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleConfirm}
+                  disabled={
+                    selectedCheckbox === "specificPassenger" &&
+                    selectedPassengers.length === 0
+                  }
+                >
+                  Confirm
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>

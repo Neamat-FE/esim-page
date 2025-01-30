@@ -23,7 +23,7 @@ const RefundConfirmation = ({ onSwitchToPnr, onClose }) => {
         </p>
       </div>
 
-      <div className="d-flex justify-content-end m-4">
+      <div className="d-flex justify-content-end my-3 ">
         <button
           type="button"
           className="btn btn-secondary me-3"

@@ -54,34 +54,46 @@ const PnrDetailsPage = ({ back, data, onSwitchToPnr }) => {
                 Ticket Refund
               </h3>
               <div className="row mb-4">
-                <div className="col-10 d-flex align align-items-center">
-                  <div className="card-body me-2">
-                    <h6 className="card-title font-size-lg  font-color-secondary">
-                      Booking Reference / PNR
-                    </h6>
-                    <p className="card-text fw-semibold font-color-primary fw-bold mt-2">
-                      TKJULK
-                    </p>
-                  </div>
-                  <div className="card-body me-4">
-                    <h6 className="card-title font-size-lg  font-color-secondary">
-                      Date Of Booking
-                    </h6>
-                    <p className="card-text fw-semibold font-color-primary fw-bold mt-2">
-                      24 feb 2024
-                    </p>
-                  </div>
-                  <div className="card-body">
-                    <h6 className="card-title font-size-lg  font-color-secondary">
-                      Selected Passenger
-                    </h6>
-                    <p className="card-text fw-semibold font-color-primary fw-bold mt-2">
-                      {displayPassengers}
-                    </p>
+                {/* Booking Details */}
+                <div className="col-12">
+                  <div className="row align-items-center">
+                    <div className="col-md-4 col-12 mb-3 mb-md-0">
+                      <div className="card-body">
+                        <h6 className="card-title font-size-lg font-color-secondary">
+                          Booking Reference / PNR
+                        </h6>
+                        <p className="card-text fw-semibold font-color-primary fw-bold mt-2">
+                          TKJULK
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="col-md-4 col-12 mb-3 mb-md-0">
+                      <div className="card-body">
+                        <h6 className="card-title font-size-lg font-color-secondary">
+                          Date Of Booking
+                        </h6>
+                        <p className="card-text fw-semibold font-color-primary fw-bold mt-2">
+                          24 Feb 2024
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="col-md-4 col-12">
+                      <div className="card-body">
+                        <h6 className="card-title font-size-lg font-color-secondary">
+                          Selected Passenger
+                        </h6>
+                        <p className="card-text fw-semibold font-color-primary fw-bold mt-2">
+                          {displayPassengers}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div className="mt-4">
+                {/* Table Section */}
+                <div className="col-12 mt-4">
                   <table className="table table-bordered">
                     <thead className="text-center">
                       <tr className="table-active">
@@ -92,50 +104,45 @@ const PnrDetailsPage = ({ back, data, onSwitchToPnr }) => {
                     </thead>
                     <tbody className="text-center">
                       {passengerListFix.length > 0 ? (
-                        <>
-                          {passengerListFix.map((passenger, index) => (
-                            <tr key={index}>
-                              <td>{passenger.name || "N/A"}</td>
-                              <td>{passenger.cancellationFee || "N/A"}</td>
-                              {index === 0 && ( // Apply rowspan only to the first row
-                                <td
-                                  rowSpan={passengerListFix.length}
-                                  className="align-middle text-center"
-                                >
-                                  <strong className="text-center">
-                                    <p className="m-0 mb-2">
-                                      Total cancellation Fee
-                                    </p>
-                                    {passengerListFix[0].contact ||
-                                      passengerListFix.reduce(
-                                        (total, p) =>
-                                          total +
-                                          (Number(p.cancellationFee) || 0),
-                                        0
-                                      )}
-                                  </strong>
-                                </td>
-                              )}
-                            </tr>
-                          ))}
-                        </>
+                        passengerListFix.map((passenger, index) => (
+                          <tr key={index}>
+                            <td>{passenger.name || "N/A"}</td>
+                            <td>{passenger.cancellationFee || "N/A"}</td>
+                            {index === 0 && ( // Apply rowspan only to the first row
+                              <td
+                                rowSpan={passengerListFix.length}
+                                className="align-middle text-center"
+                              >
+                                <strong className="text-center">
+                                  <p className="m-0 mb-2">
+                                    Total Cancellation Fee
+                                  </p>
+                                  {passengerListFix[0].contact ||
+                                    passengerListFix.reduce(
+                                      (total, p) =>
+                                        total +
+                                        (Number(p.cancellationFee) || 0),
+                                      0
+                                    )}
+                                </strong>
+                              </td>
+                            )}
+                          </tr>
+                        ))
                       ) : (
                         <tr>
                           <td colSpan="3" className="text-center">
-                            No passenger Selected for Refund
+                            No Passenger Selected for Refund
                           </td>
                         </tr>
                       )}
                     </tbody>
                   </table>
                 </div>
-
-                <div className="col-10 d-flex align align-items-center"></div>
-                <div className="col-2"></div>
               </div>
             </div>
 
-            <div className="d-flex justify-content-end m-4">
+            <div className="d-flex justify-content-end ">
               <button
                 type="button"
                 className="btn btn-secondary me-3"
