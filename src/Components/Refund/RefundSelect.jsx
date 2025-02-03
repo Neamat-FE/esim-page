@@ -143,19 +143,19 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
                               ))}
                           </select>
 
-                          <div className="mt-3 d-flex flex-wrap gap-2">
+                          <div className="mt-3 d-flex flex-wrap gap-2 ">
                             {selectedPassengers.map((passenger) => (
                               <div
                                 key={passenger.value}
-                                className="d-flex align-items-center bg-light rounded p-2"
-                                style={{ gap: "8px" }} // Adjust spacing between elements
+                                className="d-flex align-items-center light-bg-color rounded  "
+                                style={{ gap: "4px" }} // Adjust spacing between elements
                               >
-                                <span className="text-color-secondary">
+                                <span className="text-color-secondary ms-2">
                                   {passenger.name}
                                 </span>
                                 <button
                                   type="button"
-                                  className="btn btn-sm btn-outline-danger"
+                                  className="btn btn-sm rounded-5 border-1"
                                   onClick={() =>
                                     removePassenger(passenger.value)
                                   }

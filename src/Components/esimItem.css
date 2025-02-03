@@ -39,6 +39,10 @@
   background-color: #fff;
 }
 
+.light-bg-color {
+  background-color: #e6e6e6;
+}
+
 /* font sizes */
 
 .font-size-sm {
