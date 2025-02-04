@@ -17,6 +17,7 @@ const PaymentPage = () => {
   const [clickData, setClickData] = useState();
   const [moveToPnr, setMoveToPnr] = useState("refundSelect");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showPage, setShowPage] = useState("");
   const [isRefundOpen, setIsRefundOpen] = useState(true);
 
   const mobileWalletOptions = paymentResponse.options.BDT.filter(
@@ -371,6 +372,7 @@ const PaymentPage = () => {
               <RefundSelect
                 onSwitchToPnr={setMoveToPnr}
                 passengerItem={setClickData}
+                type={showPage}
               />
             ) : moveToPnr == "pnrRefund" ? (
               <PnrDetailsPage
@@ -394,22 +396,22 @@ const PaymentPage = () => {
 
         <button
           className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4"
-          onClick={handlePnrClick}
+          onClick={() => {
+            setIsModalOpen(true);
+            setShowPage("pnr");
+          }}
         >
           Change PNR/Ticket
         </button>
 
         <button
           className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
-          onClick={handleRefundClick}
+          onClick={() => {
+            setIsModalOpen(true);
+            setShowPage("refund");
+          }}
         >
           Refund
-        </button>
-        <button
-          className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Open Modal
         </button>
       </div>
     </div>

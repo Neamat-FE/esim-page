@@ -2,7 +2,23 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Selectedpassenger.css";
 
-const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
+const RefundSelect = ({ onSwitchToPnr, type, passengerItem, onClose }) => {
+  const close = () => {
+    onClose(false);
+  };
+  console.log("type", type);
+
+  const pageContent = {
+    refund: {
+      heading: "Select Passenger for Refund",
+      note: "Refund for specific passenger(s) will result in new PNR creation. Unchanged passengers(s) will remain on the mother PNR",
+    },
+    pnr: {
+      heading: "Select Passenger for Change Date",
+      note: "PNR/Ticket change for specific passenger(s) will result in new PNR creation. Unchanged passengers(s) will remain on the mother PNR.",
+    },
+  };
+
   const passengers = [
     { value: "0", name: "Neamat", cancellationFee: "750" },
     { value: "1", name: "Diponkor", cancellationFee: "450" },
@@ -59,7 +75,9 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
         <div className="row d-flex justify-content-center align-items-center">
           <div className="col-md-12 col-12 bg-white rounded-3 p-4">
             <h3 className="mb-4 text-color-primary fw-semibold font-size-xxxl">
-              Select Passenger for Refund
+              {type === "refund"
+                ? pageContent.refund.heading
+                : pageContent.pnr.heading}
             </h3>
 
             <form>
@@ -177,9 +195,10 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
                   <span className="fw-semibold primary-color font-size-xl">
                     Note:
                   </span>
-                  * Refund for specific passenger(s) will result in new PNR
-                  creation. Unchanged passenger(s) will remain on the mother
-                  PNR.
+                  *{" "}
+                  {type === "refund"
+                    ? pageContent.refund.note
+                    : pageContent.pnr.note}
                 </p>
               </div>
 
@@ -187,9 +206,11 @@ const RefundSelect = ({ onSwitchToPnr, passengerItem }) => {
                 <button
                   type="button"
                   className="btn btn-outline-secondary me-3"
+                  onClick={close}
                 >
                   Cancel
                 </button>
+
                 <button
                   type="button"
                   className="btn btn-primary"
