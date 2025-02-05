@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 import DatePicker from "react-datepicker";
 
-const PnrDetailsPage = ({ back, data, onSwitchToPnr }) => {
+const TicketRefund = ({ back, data, onSwitchToPnr }) => {
   const location = useLocation();
   const { passengerItem } = location.state || {};
 
@@ -165,4 +165,4 @@ const PnrDetailsPage = ({ back, data, onSwitchToPnr }) => {
   );
 };
 
-export default PnrDetailsPage;
+export default TicketRefund;

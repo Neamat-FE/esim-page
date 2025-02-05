@@ -9,9 +9,15 @@ import { useNavigate } from "react-router-dom";
 import ModalPage from "./ModalPage";
 import Modal from "react-modal";
 import RefundSelect from "./Refund/RefundSelect";
-import PnrDetailsPage from "./Refund/PnrRefund";
+import PnrRefund from "./Refund/TicketRefund";
 import RefundConfirmation from "./Refund/RefundConfirmation";
-import ManualRequestPage from "./ManualRequestpage";
+import ManualRequestPage from "./RefundManualRequest";
+import PnrDetailsPage from "./Refund/ChangePnr";
+import TicketRefund from "./Refund/TicketRefund";
+import ChangePnr from "./Refund/ChangePnr";
+import PnrConfirmation from "./Refund/PnrConfirmation";
+import RefundManualRequest from "./RefundManualRequest";
+import PnrManualRequest from "./Refund/PnrManualRequest";
 
 const PaymentPage = () => {
   const [clickData, setClickData] = useState();
@@ -373,9 +379,10 @@ const PaymentPage = () => {
                 onSwitchToPnr={setMoveToPnr}
                 passengerItem={setClickData}
                 type={showPage}
+                onClose={() => setIsModalOpen(false)}
               />
-            ) : moveToPnr == "pnrRefund" ? (
-              <PnrDetailsPage
+            ) : moveToPnr == "ticketRefund" ? (
+              <TicketRefund
                 back={setMoveToPnr}
                 data={clickData}
                 onSwitchToPnr={setMoveToPnr}
@@ -385,8 +392,25 @@ const PaymentPage = () => {
                 onSwitchToPnr={setMoveToPnr}
                 onClose={() => setIsModalOpen(false)}
               />
+            ) : moveToPnr == "PnrConfirmation" ? (
+              <PnrConfirmation
+                onSwitchToPnr={setMoveToPnr}
+                onClose={() => setIsModalOpen(false)}
+              />
+            ) : moveToPnr == "changePnr" ? (
+              <ChangePnr
+                back={setMoveToPnr}
+                passengerItem={clickData}
+                onSwitchToPnr={setMoveToPnr}
+                onClose={() => setIsModalOpen(false)}
+              />
+            ) : moveToPnr == "PnrManualRequest" ? (
+              <PnrManualRequest
+                onSwitchToPnr={setMoveToPnr}
+                onClose={() => setIsModalOpen(false)}
+              />
             ) : (
-              <ManualRequestPage
+              <RefundManualRequest
                 onSwitchToPnr={setMoveToPnr}
                 onClose={() => setIsModalOpen(false)}
               />
@@ -396,6 +420,7 @@ const PaymentPage = () => {
 
         <button
           className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4"
+          // onClick={handlePnrClick}
           onClick={() => {
             setIsModalOpen(true);
             setShowPage("pnr");

@@ -5,11 +5,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "react-phone-input-2/lib/style.css";
 import PaymentPage from "./Components/PaymentPage";
 import Selectpassenger from "./Components/Refund/Selectpassenger";
-import PnrDetailsPage from "./Components/Refund/PnrDetailsPage";
-import PnrRefund from "./Components/Refund/PnrRefund";
+import PnrDetailsPage from "./Components/Refund/ChangePnr";
+import PnrRefund from "./Components/Refund/TicketRefund";
 import RefundSelect from "./Components/Refund/RefundSelect";
 import { Modal } from "react-bootstrap";
 import ModalPage from "./Components/ModalPage";
+import ChangePnr from "./Components/Refund/ChangePnr";
+import TicketRefund from "./Components/Refund/TicketRefund";
 
 const App = () => {
   return (
@@ -20,9 +22,9 @@ const App = () => {
           <Route path="/booking" element={<BookingPage />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/select_passenger" element={<Selectpassenger />} />
-          <Route path="/pnr_page" element={<PnrDetailsPage />} />
+          <Route path="/change_pnr" element={<ChangePnr />} />
           <Route path="/refund_select" element={<RefundSelect />} />
-          <Route path="/pnr_refund" element={<PnrRefund />} />
+          <Route path="/ticket_refund" element={<TicketRefund />} />
           <Route path="/modal_page" element={<ModalPage />} />
         </Routes>
       </Router>

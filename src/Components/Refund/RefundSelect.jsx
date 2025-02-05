@@ -6,6 +6,7 @@ const RefundSelect = ({ onSwitchToPnr, type, passengerItem, onClose }) => {
   const close = () => {
     onClose(false);
   };
+
   console.log("type", type);
 
   const pageContent = {
@@ -14,7 +15,7 @@ const RefundSelect = ({ onSwitchToPnr, type, passengerItem, onClose }) => {
       note: "Refund for specific passenger(s) will result in new PNR creation. Unchanged passengers(s) will remain on the mother PNR",
     },
     pnr: {
-      heading: "Select Passenger for Change Date",
+      heading: "Select Passenger for Change Date/PNR",
       note: "PNR/Ticket change for specific passenger(s) will result in new PNR creation. Unchanged passengers(s) will remain on the mother PNR.",
     },
   };
@@ -58,7 +59,13 @@ const RefundSelect = ({ onSwitchToPnr, type, passengerItem, onClose }) => {
   };
 
   const handleConfirm = () => {
-    onSwitchToPnr("pnrRefund");
+    if (type == "refund") {
+      onSwitchToPnr("ticketRefund");
+    } else if (type == "pnr") {
+      onSwitchToPnr("changePnr");
+    }
+
+    // onSwitchToPnr("pnrRefund");
     passengerItem(
       selectedCheckbox === "allPassenger" ? passengers : selectedPassengers
     );

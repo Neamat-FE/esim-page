@@ -1,7 +1,7 @@
 import React from "react";
 import { Row } from "react-bootstrap";
 
-const ManualRequestPage = ({ onClose }) => {
+const RefundManualRequest = ({ onClose }) => {
   const close = () => {
     onClose(false);
   };
@@ -44,19 +44,38 @@ const ManualRequestPage = ({ onClose }) => {
 
         <div className="row mt-3">
           <div className="col-md-6 col-sm-12">
-            <div className="form-group">
+            <div className="form-group" style={{ position: "relative" }}>
               <label htmlFor="booking-class">Select Passenger</label>
               <select
                 className="form-control mt-2"
                 id="select_passenger"
-                style={{ height: "48px" }}
+                style={{
+                  height: "48px",
+                  appearance: "none", // Hides default dropdown arrow
+                  paddingRight: "40px", // Ensures space for the arrow image
+                  width: "100%",
+                }}
               >
                 <option value="">Select Passenger</option>
-                {/* Add options for booking class here */}
                 <option value="economy">Neamat</option>
                 <option value="business">Dip</option>
                 <option value="first-class">Zakir</option>
               </select>
+
+              {/* Centered Arrow Image */}
+              <img
+                src="/images/arrow-circle-up.png" // Ensure correct path
+                alt="Dropdown Arrow"
+                style={{
+                  position: "absolute",
+                  right: "15px", // Position to the right
+                  top: "50%", // Center vertically
+                  transform: "translateY(10%)", // Adjust for perfect centering
+                  width: "28px", // Adjust size as needed
+                  height: "28px",
+                  pointerEvents: "none", // Prevent click interference
+                }}
+              />
             </div>
           </div>
           <div className="col-md-6 col-sm-12 mt-3 mt-md-0">
@@ -83,11 +102,11 @@ const ManualRequestPage = ({ onClose }) => {
           Cancel
         </button>
         <button type="button" className="btn btn-primary">
-          Manual Request
+          Confirm Submit
         </button>
       </div>
     </div>
   );
 };
 
-export default ManualRequestPage;
+export default RefundManualRequest;

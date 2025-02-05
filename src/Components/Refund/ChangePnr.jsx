@@ -3,9 +3,14 @@ import "./PnrDetailsPage.css";
 import { useLocation } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
-const PnrDetailsPage = () => {
+const ChangePnr = ({ passengerItem, back, onSwitchToPnr }) => {
   const location = useLocation();
-  const { passengerItem } = location.state || {};
+  // const { passengerItem } = location.state || {};
+  console.log("passengerItem", passengerItem);
+
+  const handleNextClick = () => {
+    onSwitchToPnr("PnrConfirmation");
+  };
 
   const displayPassengers = Array.isArray(passengerItem)
     ? passengerItem.map((passenger) => passenger.name).join(", ")
@@ -22,14 +27,6 @@ const PnrDetailsPage = () => {
     setBookingClass(e.target.value);
   };
 
-  const handleNextClick = () => {
-    console.log("Next button clicked");
-  };
-
-  const handleBackClick = () => {
-    console.log("Back button clicked");
-  };
-
   const [isChecked, setIsChecked] = useState(false);
   const handleCheckboxChange = (e) => {
     setIsChecked(e.target.checked);
@@ -39,15 +36,20 @@ const PnrDetailsPage = () => {
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
+  const handleBackClick = () => {
+    back("refundSelect");
+  };
 
   return (
     <div className="container">
-      <div className="my-5">
+      <div className="my-3">
         <div className="row justify-content-center align-items-center">
-          <div className="col-md-8 col-12 shadow">
-            <div className="m-4">
-              <h3 className="mb-4 font-color-primary fw-semibold font-size-xxxl">
-                Ticket Refund
+          <div className="col-12">
+            {" "}
+            {/* Ensure full width on smaller screens */}
+            <div className="m-2">
+              <h3 className="mb-3 font-color-primary fw-semibold font-size-xxxl">
+                Change PNR
               </h3>
 
               {/* Booking Details */}
@@ -128,16 +130,18 @@ const PnrDetailsPage = () => {
                             Hazrat Shahjalal Int. Airport
                           </p>
                         </div>
-                        <div className="col-md-3 col-12 mt-3 d-flex align-items-center justify-content-center">
-                          <input
-                            className="form-check-input"
-                            type="checkbox"
-                            id="allPassengerCheckbox"
-                            checked={isChecked}
-                            onChange={handleCheckboxChange}
-                          />
+                        <div className="col-md-3 col-12 mt-3 d-flex align-items-center justify-content-center text-center">
+                          <div>
+                            <input
+                              className="form-check-input"
+                              type="checkbox"
+                              id="allPassengerCheckbox"
+                              checked={isChecked}
+                              onChange={handleCheckboxChange}
+                            />
+                          </div>
                           <label
-                            className="form-check-label text-color-secondary ms-2 "
+                            className="form-check-label text-color-secondary ms-3 "
                             htmlFor="allPassengerCheckbox"
                           >
                             Select For Change
@@ -201,7 +205,7 @@ const PnrDetailsPage = () => {
               </div>
 
               {/* Buttons */}
-              <div className="d-flex justify-content-end m-4">
+              <div className="d-flex justify-content-end mt-4">
                 <button
                   type="button"
                   className="btn btn-secondary me-3"
@@ -214,7 +218,7 @@ const PnrDetailsPage = () => {
                   className="btn btn-primary"
                   onClick={handleNextClick}
                 >
-                  Next
+                  Confirm Change
                 </button>
               </div>
             </div>
@@ -225,4 +229,4 @@ const PnrDetailsPage = () => {
   );
 };
 
-export default PnrDetailsPage;
+export default ChangePnr;
