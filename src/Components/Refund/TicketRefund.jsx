@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./PnrDetailsPage.css";
+import "./ChangePnr.css";
 import { useLocation } from "react-router-dom";
 
 import DatePicker from "react-datepicker";

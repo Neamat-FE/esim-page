@@ -18,3 +18,9 @@
   color: #4b4b4b;
   font-weight: 400;
 }
+
+/* Optional: Add scroll style for the whole container if needed */
+.container {
+  max-height: 80vh; /* Adjust based on your layout */
+  overflow-y: auto;
+}
