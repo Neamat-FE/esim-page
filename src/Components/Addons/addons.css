@@ -1,0 +1,35 @@
+.primary-color {
+  color: #eb1933 !important;
+}
+/* font size */
+.font-size-sm {
+  font-size: 12px;
+}
+.font-size-md {
+  font-size: 14px;
+}
+.font-size-lg {
+  font-size: 16px;
+  line-height: 28px;
+}
+.font-size-xl {
+  font-size: 18px;
+}
+.font-size-xxl {
+  font-size: 20px;
+}
+
+/* font color */
+
+.font-color-primary {
+  color: #495560 !important;
+}
+.font-color-secondary {
+  color: #52556f !important;
+}
+.font-color-light {
+  color: #6e7491 !important;
+}
+.font-color-white {
+  color: #ffffff !important;
+}

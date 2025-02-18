@@ -12,6 +12,7 @@ import { Modal } from "react-bootstrap";
 import ModalPage from "./Components/ModalPage";
 import ChangePnr from "./Components/Refund/ChangePnr";
 import TicketRefund from "./Components/Refund/TicketRefund";
+import Addonspage from "./Components/Addons/Addonspage";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/refund_select" element={<RefundSelect />} />
           <Route path="/ticket_refund" element={<TicketRefund />} />
           <Route path="/modal_page" element={<ModalPage />} />
+          <Route path="/addons_page" element={<Addonspage />} />
         </Routes>
       </Router>
     </div>

@@ -19,8 +19,7 @@
   font-weight: 400;
 }
 
-/* Optional: Add scroll style for the whole container if needed */
-.container {
-  max-height: 80vh; /* Adjust based on your layout */
+/* .container {
+  max-height: 80vh; 
   overflow-y: auto;
-}
+} */

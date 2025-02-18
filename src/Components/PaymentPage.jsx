@@ -18,6 +18,8 @@ import ChangePnr from "./Refund/ChangePnr";
 import PnrConfirmation from "./Refund/PnrConfirmation";
 import RefundManualRequest from "./RefundManualRequest";
 import PnrManualRequest from "./Refund/PnrManualRequest";
+import AxiosPage from "./Refund/AxiosPage";
+import DataSection from "./DataSection";
 
 const PaymentPage = () => {
   const [clickData, setClickData] = useState();
@@ -97,13 +99,6 @@ const PaymentPage = () => {
   };
 
   const navigate = useNavigate();
-
-  const handlePnrClick = () => {
-    navigate("/select_passenger");
-  };
-  const handleRefundClick = () => {
-    navigate("/refund_select");
-  };
 
   // Render dynamic views for each payment method
   const renderCardView = () => (
@@ -417,27 +412,49 @@ const PaymentPage = () => {
             )}
           </ModalPage>
         </div>
+        <div className="mb-4">
+          <button
+            className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4"
+            // onClick={handlePnrClick}
+            onClick={() => {
+              setIsModalOpen(true);
+              setShowPage("pnr");
+            }}
+          >
+            Change PNR/Ticket
+          </button>
 
-        <button
-          className="btn btn-primary mb-md-3 mb-0 me-3 me-md-0 mt-4"
-          // onClick={handlePnrClick}
-          onClick={() => {
-            setIsModalOpen(true);
-            setShowPage("pnr");
-          }}
-        >
-          Change PNR/Ticket
-        </button>
+          <button
+            className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
+            onClick={() => {
+              setIsModalOpen(true);
+              setShowPage("refund");
+            }}
+          >
+            Refund
+          </button>
+          <button
+            className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
+            onClick={() =>
+              navigate("/addons_page", {
+                state: { esimData: esimData },
+              })
+            }
+          >
+            Addons
+          </button>
+        </div>
 
-        <button
-          className="btn btn-primary mb-md-3 mb-0 ms-3 me-md-0 mt-4"
-          onClick={() => {
-            setIsModalOpen(true);
-            setShowPage("refund");
-          }}
-        >
-          Refund
-        </button>
+        <div className="row d-flex ">
+          <div className="col-md-4">
+            <div className="shadow p-4 rounded-2 ">
+              <h2>This is Filter Section</h2>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <AxiosPage />
+          </div>
+        </div>
       </div>
     </div>
   );

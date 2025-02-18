@@ -212,7 +212,7 @@ const RefundSelect = ({ onSwitchToPnr, type, passengerItem, onClose }) => {
               <div className="d-flex justify-content-end mt-4">
                 <button
                   type="button"
-                  className="btn btn-outline-secondary me-3"
+                  className="btn btn-secondary me-3"
                   onClick={close}
                 >
                   Cancel

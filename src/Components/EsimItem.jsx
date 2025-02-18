@@ -4,8 +4,28 @@ import "./esimItem.css";
 import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const EsimItem = ({ esimItem }) => {
+  // const [response, setResponse] = useState(null);
+  const fetchData = async () => {
+    const token = "71|q41LqXUg1MeDhxXDnutidBBhDXc5Mdiz1am2s0xd8c283a70";
+    const url =
+      "https://dev.api.flightexperts.com/api/flights/v1/add-ons/esim/search?type=global";
+    try {
+      const res = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      // setResponse(response);
+
+      console.log("Axios data :", res["data"]);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
   const data = "Hello from HomePage!";
 
   const navigate = useNavigate();
