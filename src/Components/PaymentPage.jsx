@@ -20,8 +20,10 @@ import RefundManualRequest from "./RefundManualRequest";
 import PnrManualRequest from "./Refund/PnrManualRequest";
 import AxiosPage from "./Refund/AxiosPage";
 import DataSection from "./DataSection";
+import Esim from "./Esim";
 
 const PaymentPage = () => {
+  const name = "neamat";
   const [clickData, setClickData] = useState();
   const [moveToPnr, setMoveToPnr] = useState("refundSelect");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -273,7 +275,6 @@ const PaymentPage = () => {
                     </button>
                   ))}
                 </div>
-
                 <div className="">
                   {activeMethod === "card" && renderCardView()}
                   {activeMethod === "wallet" && renderWalletView()}
@@ -445,6 +446,8 @@ const PaymentPage = () => {
           </button>
         </div>
 
+        {/* Accordion part */}
+
         <div className="row d-flex ">
           <div className="col-md-4">
             <div className="shadow p-4 rounded-2 ">
@@ -455,6 +458,9 @@ const PaymentPage = () => {
             <AxiosPage />
           </div>
         </div>
+      </div>
+      <div>
+        <Esim/>
       </div>
     </div>
   );
